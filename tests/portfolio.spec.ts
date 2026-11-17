@@ -73,3 +73,20 @@ test('gallery supports keyboard navigation, Escape and focus restoration', async
   await expect(page.getByRole('dialog')).not.toBeVisible()
   await expect(frame).toBeFocused()
 })
+
+for (const language of ['fr', 'ar'] as const) {
+  for (const width of [360, 390, 768, 1024, 1440]) {
+    test(`${language} is translated and responsive at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 })
+      await page.emulateMedia({ reducedMotion: 'reduce' })
+      await page.goto('/')
+      await page.getByRole('combobox').selectOption(language)
+      await expect(page.locator('html')).toHaveAttribute('lang', language)
+      await expect(page.locator('html')).toHaveAttribute('dir', language === 'ar' ? 'rtl' : 'ltr')
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+      await page.reload()
+      await expect(page.locator('html')).toHaveAttribute('lang', language)
+      await expect(page.locator('.intro')).toHaveCount(0)
+    })
+  }
+}
