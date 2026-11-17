@@ -1,23 +1,28 @@
 import { ArrowDown, ArrowUpRight, MoveUpRight } from 'lucide-react'
-import { motion, useMotionValue, useReducedMotion, useSpring } from 'motion/react'
+import { useRef } from 'react'
+import { motion, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react'
 import { useLanguage } from '../i18n/context'
 import { profile } from '../data/profile'
 import { PitchArt } from '../components/ui/PitchArt'
 import { TextReveal } from '../components/motion/TextReveal'
 
-export function Hero() {
+export function Hero({ ready = true }: { ready?: boolean }) {
   const { t } = useLanguage()
   const reduced = useReducedMotion()
+  const root = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({ target: root, offset: ['start start', 'end start'] })
+  const scrollOffset = useTransform(scrollYProgress, [0, 1], reduced ? [0, 0] : [0, 65])
   const x = useMotionValue(0), y = useMotionValue(0)
   const springX = useSpring(x, { stiffness: 65, damping: 25 })
   const springY = useSpring(y, { stiffness: 65, damping: 25 })
-  return <section id="top" className="hero" onPointerMove={event => {
+  const artY = useTransform(() => springY.get() + scrollOffset.get())
+  return <section id="top" className="hero" ref={root} onPointerMove={event => {
     if (reduced || event.pointerType !== 'mouse') return
     const rect = event.currentTarget.getBoundingClientRect()
     x.set((event.clientX - rect.left - rect.width / 2) * .016)
     y.set((event.clientY - rect.top - rect.height / 2) * .016)
   }} onPointerLeave={() => { x.set(0); y.set(0) }}>
-    <motion.div className="hero-art" style={{ x: springX, y: springY }}>
+    <motion.div className="hero-art" style={{ x: springX, y: artY }}>
       {profile.heroImage ? <img className="hero-photo" src={profile.heroImage} style={{ objectPosition: profile.heroPosition }} alt="" /> : <PitchArt />}
       {profile.heroCutout && <img className="hero-cutout" src={profile.heroCutout} alt="" />}
       <div className="hero-art-shade" />
@@ -28,9 +33,9 @@ export function Hero() {
     <div className="container hero-content">
       <div className="hero-overline eyebrow"><span className="status-dot" />{t.hero.label}</div>
       <h1 className="hero-title">
-        <TextReveal text={t.hero.first} delay={.12} />
-        <TextReveal text={t.hero.second} delay={.22} />
-        <span className="hero-title-outline"><TextReveal text={t.hero.third} delay={.32} /><TextReveal text={t.hero.fourth} delay={.42} /></span>
+        <TextReveal text={t.hero.first} delay={.12} ready={ready} />
+        <TextReveal text={t.hero.second} delay={.22} ready={ready} />
+        <span className="hero-title-outline"><TextReveal text={t.hero.third} delay={.32} ready={ready} /><TextReveal text={t.hero.fourth} delay={.42} ready={ready} /></span>
       </h1>
       <div className="hero-bottom-copy">
         <p className="body-copy">{t.hero.body}</p>

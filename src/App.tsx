@@ -9,8 +9,16 @@ import { Gallery } from './sections/Gallery'
 import { Availability } from './sections/Availability'
 import { Contact } from './sections/Contact'
 import { Footer } from './components/layout/Footer'
+import { shouldPlayIntro } from './lib/intro'
+import { writeStorage } from './lib/storage'
 
 export default function App() {
   const { t } = useLanguage()
-  return <><a href="#main" className="skip-link">{t.skip}</a><IntroSequence /><Navbar /><main id="main"><Hero /><About /><Philosophy /><Experience /><Gallery /><Availability /><Contact /></main><Footer /></>
+  const [introVisible, setIntroVisible] = useState(shouldPlayIntro)
+  const finishIntro = useCallback(() => {
+    writeStorage('ym-intro', 'seen', true)
+    setIntroVisible(false)
+  }, [])
+  return <><a href="#main" className="skip-link">{t.skip}</a><IntroSequence visible={introVisible} onComplete={finishIntro}/><Navbar /><main id="main"><Hero ready={!introVisible}/><About /><Philosophy /><Experience /><Gallery /><Availability /><Contact /></main><Footer /></>
 }
+import { useCallback, useState } from 'react'
