@@ -36,15 +36,16 @@
 - [x] Replaced the tall match timeline with a compact responsive grid and on-demand venue/discipline details.
 - [x] Removed white badge tiles; the existing transparent WebP crests now sit directly against the dark background.
 - [x] Updated both Carthage appointments to Union Sportive de Carthage (USC), with the sourced transparent football club crest.
+- [x] Added inline contact and platform icons to email, WhatsApp, social links and portfolio links in Contact and the footer, retaining accessible text labels.
 
 ## Verification
 
 - Production build, strict TypeScript and ESLint pass.
 - Playwright tests cover responsive layouts, internationalization, gallery/navigation keyboard behavior, browser errors and SEO.
 - Automated axe WCAG A/AA checks pass for English, French, Arabic and the open lightbox.
-- Initial JavaScript is about 143 KB gzip; desktop GSAP enhancements are separate chunks.
+- Initial JavaScript is about 145 KB gzip; desktop GSAP enhancements are separate chunks.
 - The earlier 42-test pass covered compact grid dimensions, keyboard-operated details, real contact destinations, transparent club badges, direct links and match-data integrity.
-- Current owner instruction: do not create or run tests. The Carthage update passed production build and ESLint; no test-suite result is claimed for this update.
+- Current owner instruction: do not create or run tests. The Carthage and link-icon updates passed production build and ESLint; no test-suite result is claimed for these updates.
 - No invented appointments, statistics, certifications, testimonials, professional affiliations or contact identities.
 
 ## Awaiting real content / account access
