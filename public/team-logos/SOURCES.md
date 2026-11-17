@@ -4,7 +4,7 @@ Retrieved 17 November 2026. These small badges identify the teams named in Yassi
 
 **Ownership:** Club emblems remain the intellectual property and trademarks of their respective clubs. Availability on Wikipedia or a logo archive is not a general reuse license. These assets are not licensed as original portfolio artwork. Consult each source's rights notice and obtain any permissions needed for the deployment jurisdiction or broader promotional use.
 
-**Processing:** Images were resized proportionally to at most 128×128 pixels and encoded as lossless RGBA WebP, without recoloring or redrawing. They are displayed at approximately 30–40 pixels and served locally; visitors make no requests to the source websites.
+**Processing:** Images were resized proportionally to at most 128×128 pixels and encoded as transparent lossless RGBA WebP, without recoloring or redrawing. They are displayed at approximately 22–32 pixels, without white background tiles, and served locally; visitors make no requests to the source websites. White areas within the crest itself remain unchanged.
 
 | Local asset | Identified club | Source / rights information |
 | --- | --- | --- |

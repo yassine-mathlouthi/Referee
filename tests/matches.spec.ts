@@ -35,7 +35,7 @@ test('reported cards, penalty and score order are preserved', () => {
   expect(matches.find(match => match.id === '2026-10-31-parc-b-minime-a')?.redCards).toBe(1)
 })
 
-test('timeline shows accurate totals, expands all dates and filters appointments', async ({ page }) => {
+test('match grid shows accurate totals, expands all dates and filters appointments', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/#experience')
   await expect(page.locator('.match-stats dd')).toHaveText(['15', '5', '10'])
@@ -88,5 +88,29 @@ for (const width of [360, 768]) {
         return bounds.left >= 0 && bounds.right <= innerWidth
       }))).toBe(true)
     }
+  })
+}
+
+for (const [width, columns] of [[390, 2], [1440, 3]]) {
+  test(`compact grid uses ${columns} columns at ${width}px and reveals details on demand`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 })
+    await page.emulateMedia({ reducedMotion: 'reduce' })
+    await page.goto('/#experience')
+    await page.evaluate(() => document.fonts.ready)
+    const grid = page.locator('#match-history')
+    expect(await grid.evaluate(element => getComputedStyle(element).gridTemplateColumns.split(' ').length)).toBe(columns)
+    const bounds = await grid.boundingBox()
+    expect(bounds!.height).toBeLessThan(width === 1440 ? 500 : 950)
+    await expect(page.locator('.match-details[open]')).toHaveCount(0)
+    const card = page.locator('[data-match-id="2026-11-08-megrine-junior"]')
+    await expect(card.locator('.team-score')).toHaveText(['1', '1'])
+    const summary = card.locator('.match-details summary')
+    await summary.focus()
+    await page.keyboard.press('Enter')
+    await expect(card.locator('.match-details')).toHaveAttribute('open', '')
+    await expect(card.locator('.match-decisions')).toBeVisible()
+    await expect(card.locator('.match-detail-meta')).toContainText('Mégrine')
+    await page.keyboard.press('Enter')
+    await expect(card.locator('.match-decisions')).not.toBeVisible()
   })
 }

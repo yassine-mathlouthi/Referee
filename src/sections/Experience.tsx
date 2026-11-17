@@ -3,7 +3,7 @@ import { ArrowUpRight, Flag } from 'lucide-react'
 import { useLanguage } from '../i18n/context'
 import { matches, summarizeMatches, type MatchRole } from '../data/matches'
 import { SectionReveal } from '../components/motion/SectionReveal'
-import { TeamBadge } from '../components/ui/TeamBadge'
+import { MatchCard } from '../components/ui/MatchCard'
 import { teams } from '../data/teams'
 
 export function Experience() {
@@ -15,7 +15,6 @@ export function Experience() {
   const visible = expanded ? filtered : filtered.slice(0, 6)
   const totals = summarizeMatches(matches)
   const number = new Intl.NumberFormat(language)
-  const date = new Intl.DateTimeFormat(language, { dateStyle: 'medium', timeZone: 'UTC' })
   return <section id="experience" className="section experience container" aria-labelledby="experience-title">
     <SectionReveal><p className="eyebrow section-label">{t.experience.label}</p><div className="section-intro"><h2 className="section-heading" id="experience-title">{t.experience.title}<br/><span className="muted">{t.experience.accent}</span></h2><p className="body-copy">{t.experience.intro}</p></div></SectionReveal>
     {appointments.length ? <>
@@ -24,20 +23,16 @@ export function Experience() {
         <dl className="match-stats">{(['played', 'referee', 'assistant'] as const).map(key => <div key={key}><dt>{t.experience[key]}</dt><dd>{number.format(totals[key])}</dd></div>)}</dl>
         <p className="match-source body-copy">{t.experience.source}</p>
       </SectionReveal>
+      <aside className="competition-guide" aria-labelledby="competition-guide-title">
+        <h3 id="competition-guide-title" className="eyebrow">{t.experience.guideTitle}</h3>
+        <dl>
+          <div><dt>{t.experience.guideLeagueLabel}</dt><dd>{t.experience.guideLeague}</dd></div>
+          <div><dt>{t.experience.guideAgeLabel}</dt><dd>{t.experience.guideAge}</dd></div>
+        </dl>
+      </aside>
       <div className="match-filters" role="group" aria-label={t.experience.filter}>{(['all', 'referee', 'assistant'] as const).map(value => <button type="button" key={value} aria-pressed={role === value} onClick={() => { setRole(value); setExpanded(false) }}>{value === 'all' ? t.experience.all : t.experience.roles[value]}</button>)}</div>
-      <ol id="match-history" className="match-timeline" aria-label={t.experience.list}>{visible.map(match => <li key={match.id} data-match-id={match.id} data-role={match.role} data-status={match.status}>
-        <SectionReveal className="match-record">
-          <time className="eyebrow" dateTime={match.date}>{date.format(new Date(`${match.date}T00:00:00Z`))}</time>
-          <div className="match-info"><p className="eyebrow accent">{t.experience.types[match.matchType]} <span className="match-category">{t.experience.ages[match.ageCategory]}</span></p><h3><span className="match-team"><TeamBadge key={match.homeTeam} team={match.homeTeam}/><bdi>{match.homeTeam}</bdi></span> <span className="match-versus">{t.experience.versus}</span> <span className="match-team"><TeamBadge key={match.awayTeam} team={match.awayTeam}/><bdi>{match.awayTeam}</bdi></span></h3>
-            <p className="match-meta"><span className={`match-role match-role-${match.role}`}>{t.experience.roles[match.role]}</span><bdi className="muted">{match.location}</bdi></p>
-            {match.status === 'opponentAbsent' ? <p className="match-absence body-copy">{t.experience.absentNote}</p> : match.role === 'referee' && <dl className="match-decisions">
-              <div><dt><span className="card-symbol card-yellow" aria-hidden="true"/>{t.experience.yellow}</dt><dd>{number.format(match.yellowCards)}</dd></div>
-              <div><dt><span className="card-symbol card-red" aria-hidden="true"/>{t.experience.red}</dt><dd>{number.format(match.redCards)}</dd></div>
-              {match.penalties !== undefined && <div><dt>{t.experience.penalties}</dt><dd>{number.format(match.penalties)}</dd></div>}
-            </dl>}
-          </div>
-          <div className={`match-result ${match.status === 'opponentAbsent' ? 'match-result-absent' : ''}`}>{match.status === 'played' ? <><p className="match-score" dir="ltr">{match.score[0]} <span>—</span> {match.score[1]}</p><span className="eyebrow">{t.experience.result}</span></> : <span className="eyebrow">{t.experience.absent}</span>}</div>
-        </SectionReveal>
+      <ol id="match-history" className="match-grid" aria-label={t.experience.list}>{visible.map(match => <li key={match.id} data-match-id={match.id} data-role={match.role} data-status={match.status}>
+        <MatchCard match={match}/>
       </li>)}</ol>
       {filtered.length > 6 && <div className="match-more"><button type="button" className="button button-outline" aria-controls="match-history" aria-expanded={expanded} onClick={() => setExpanded(!expanded)}>{expanded ? t.experience.showLess : t.experience.showAll} <span className="eyebrow">({number.format(filtered.length)})</span></button></div>}
       <details className="team-sources"><summary>{t.experience.badgeSources}</summary><p className="body-copy">{t.experience.badgeNote}</p><ul>{teams.map(team => <li key={team.id}><a href={team.source} target="_blank" rel="noopener noreferrer"><bdi>{team.name}{team.city ? ` · ${team.city}` : ''}</bdi><ArrowUpRight size={13}/></a></li>)}</ul></details>
