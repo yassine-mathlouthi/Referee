@@ -1,5 +1,16 @@
 import { test, expect } from '@playwright/test'
 import AxeBuilder from '@axe-core/playwright'
+import { getContactLinks } from '../src/lib/contact'
+import { profile } from '../src/data/profile'
+
+test('only valid configured contact destinations are exposed', () => {
+  expect(getContactLinks()).toEqual([])
+  expect(getContactLinks({ ...profile, email: 'invalid', whatsapp: '+123', linkedin: 'javascript:alert(1)', cv: '//external.test/file.pdf' })).toEqual([])
+  const links = getContactLinks({ ...profile, email: 'referee@example.org', whatsapp: '21612345678', linkedin: 'https://linkedin.com/in/test', cv: '/files/cv.pdf' })
+  expect(links.map(link => link.key)).toEqual(['email', 'whatsapp', 'linkedin', 'cv'])
+  expect(links[0].href).toBe('mailto:referee@example.org')
+  expect(links[1].href).toBe('https://wa.me/21612345678')
+})
 
 test('introduction is skippable and does not replay', async ({ page }) => {
   await page.goto('/')

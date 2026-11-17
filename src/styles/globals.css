@@ -165,6 +165,17 @@ body::after { content: ''; position: fixed; inset: 0; z-index: 80; pointer-event
 .world-label > span { width: 5px; height: 5px; background: #080a0b; border-radius: 50%; }
 .availability-audiences { list-style: none; padding: 26px 0 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; }
 .availability-audiences li { font-size: 9px; color: #3e501b; }
+.contact { padding-block: 130px 100px; }
+.contact-heading { display: flex; align-items: center; gap: 40px; justify-content: space-between; }
+.contact .section-heading { font-size: clamp(62px, 8.4vw, 122px); }
+.contact-arrow { display: grid; place-items: center; border: 1px solid #ffffff26; width: 145px; height: 145px; flex-shrink: 0; border-radius: 50%; color: #c7ff36; }
+.contact-arrow svg { width: 85px; height: 85px; }
+.contact-bottom { display: flex; justify-content: space-between; gap: 65px; margin-top: 48px; padding-top: 40px; border-top: 1px solid #ffffff1a; }
+.contact-bottom > .body-copy { max-width: 360px; font-size: 13px; }
+.contact-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px; max-width: 580px; }
+.contact-pending { border-inline-start: 1px solid #c7ff3666; padding-inline-start: 24px; }
+@media (max-width: 1023px) { .contact-arrow { width: 100px; height: 100px; }.contact-arrow svg { width: 55px; height: 55px; } }
+@media (max-width: 767px) { .contact { padding-block: 80px; }.contact-heading { gap: 0; }.contact-arrow { display: none; }.contact .section-heading { font-size: clamp(54px, 12.2vw, 90px); }.contact-bottom { flex-direction: column; gap: 24px; margin-top: 32px; padding-top: 28px; }.contact-links { justify-content: flex-start; } }
 @media (max-width: 767px) {
   .availability { padding-block: 75px 50px; }.availability-grid { grid-template-columns: 1fr; gap: 20px; }.availability .section-heading { font-size: clamp(60px, 14vw, 94px); }
   .world-composition { max-width: 380px; width: 100%; margin-inline: auto; }.world-grid { width: 100%; margin: 0; }.availability-audiences { padding-top: 22px; }
