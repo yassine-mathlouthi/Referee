@@ -111,6 +111,15 @@ test('normal-motion page scrolls without errors or hiding content', async ({ pag
   expect(errors).toEqual([])
 })
 
+for (const section of ['experience', 'gallery']) {
+  test(`direct ${section} links land on the section after React renders`, async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' })
+    await page.goto(`/#${section}`)
+    await expect(page.locator('.intro')).toHaveCount(0)
+    await expect(page.locator(`#${section} h2`)).toBeInViewport()
+  })
+}
+
 test('SEO has truthful structured identity and translated titles', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/')

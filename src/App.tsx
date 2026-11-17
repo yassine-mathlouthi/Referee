@@ -15,10 +15,19 @@ import { writeStorage } from './lib/storage'
 export default function App() {
   const { t } = useLanguage()
   const [introVisible, setIntroVisible] = useState(shouldPlayIntro)
+  useEffect(() => {
+    if (!location.hash) return
+    let target: string
+    try { target = decodeURIComponent(location.hash.slice(1)) } catch { return }
+    // The initial fragment can arrive before React has rendered its section.
+    // Ordinary anchor clicks continue to use native browser navigation.
+    const frame = requestAnimationFrame(() => document.getElementById(target)?.scrollIntoView({ behavior: 'instant', block: 'start' }))
+    return () => cancelAnimationFrame(frame)
+  }, [])
   const finishIntro = useCallback(() => {
     writeStorage('ym-intro', 'seen', true)
     setIntroVisible(false)
   }, [])
   return <><a href="#main" className="skip-link">{t.skip}</a><IntroSequence visible={introVisible} onComplete={finishIntro}/><Navbar /><main id="main"><Hero ready={!introVisible}/><About /><Philosophy /><Experience /><Gallery /><Availability /><Contact /></main><Footer /></>
 }
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'

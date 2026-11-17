@@ -36,7 +36,7 @@
 - Playwright tests cover responsive layouts, internationalization, gallery/navigation keyboard behavior, browser errors and SEO.
 - Automated axe WCAG A/AA checks pass for English, French, Arabic and the open lightbox.
 - Initial JavaScript is about 140 KB gzip; desktop GSAP enhancements are separate chunks.
-- All 32 tests pass, including production-browser checks and match-data integrity tests.
+- All 34 tests pass, including production-browser checks, direct section links and match-data integrity tests.
 - No invented appointments, statistics, certifications, testimonials, professional affiliations or contact identities.
 
 ## Awaiting real content / account access
