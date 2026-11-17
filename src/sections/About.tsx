@@ -10,7 +10,7 @@ export function About() {
     <SectionReveal><p className="eyebrow section-label">{t.about.label}</p></SectionReveal>
     <div className="about-grid">
       <SectionReveal className="about-visual">
-        <div className="about-image">{profile.aboutImage ? <img src={profile.aboutImage} alt={t.about.caption} loading="lazy" /> : <PitchArt variant={2}/>}<span className="about-image-number">01<span>/ YM</span></span><div className="about-image-corner"><ArrowUpRight size={28}/></div></div>
+        <div className="about-image">{profile.aboutImage ? <img src={profile.aboutImage} srcSet={profile.aboutSrcSet} sizes="(max-width: 767px) calc(100vw - 40px), 40vw" width={946} height={1228} alt={t.about.photoAlt} loading="lazy" decoding="async" /> : <PitchArt variant={2}/>}<span className="about-image-number">01<span>/ YM</span></span><div className="about-image-corner"><ArrowUpRight size={28}/></div></div>
         <div className="about-caption"><span className="eyebrow">{t.about.frame}</span><span className="accent">↗</span></div>
       </SectionReveal>
       <SectionReveal className="about-copy">

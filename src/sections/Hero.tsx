@@ -16,14 +16,14 @@ export function Hero({ ready = true }: { ready?: boolean }) {
   const springX = useSpring(x, { stiffness: 65, damping: 25 })
   const springY = useSpring(y, { stiffness: 65, damping: 25 })
   const artY = useTransform(() => springY.get() + scrollOffset.get())
-  return <section id="top" className="hero" ref={root} onPointerMove={event => {
+  return <section id="top" className={`hero ${profile.heroImage ? 'hero-real-photo' : ''}`} ref={root} onPointerMove={event => {
     if (reduced || event.pointerType !== 'mouse') return
     const rect = event.currentTarget.getBoundingClientRect()
     x.set((event.clientX - rect.left - rect.width / 2) * .016)
     y.set((event.clientY - rect.top - rect.height / 2) * .016)
   }} onPointerLeave={() => { x.set(0); y.set(0) }}>
     <motion.div className="hero-art" style={{ x: springX, y: artY }}>
-      {profile.heroImage ? <img className="hero-photo" src={profile.heroImage} style={{ objectPosition: profile.heroPosition }} alt="" /> : <PitchArt />}
+      {profile.heroImage ? <img className="hero-photo" src={profile.heroImage} srcSet={profile.heroSrcSet} sizes="(max-width: 767px) calc(100vw - 40px), 65vw" width={941} height={1372} fetchPriority="high" style={{ objectPosition: profile.heroPosition }} alt={t.hero.photoAlt} /> : <PitchArt />}
       {profile.heroCutout && <img className="hero-cutout" src={profile.heroCutout} alt="" />}
       <div className="hero-art-shade" />
       <span className="hero-art-index eyebrow">YM / 01</span>

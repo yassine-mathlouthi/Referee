@@ -6,6 +6,7 @@ export const en = {
   menu: 'Open menu', close: 'Close', language: 'Language', connect: 'Let’s talk',
   intro: ['Precision.', 'Authority.', 'Fair play.'],
   hero: {
+    photoAlt: 'Yassine in a yellow referee shirt, blowing his whistle and pointing across the pitch.',
     label: 'On the pitch. In the moment.',
     first: 'NOT JUST', second: 'A REFEREE.', third: 'A GUARDIAN', fourth: 'OF THE GAME.',
     body: 'Football is more than a game. It’s a responsibility, a passion, and a commitment to fairness.',
@@ -18,7 +19,8 @@ export const en = {
     lead: 'A love for football. A responsibility to the game.',
     body: 'I’m Yassine, a football referee from Tunisia. For me, refereeing means being fully present: reading the game, respecting its players, and bringing a calm, fair approach to every decision.',
     more: 'My journey is driven by a passion for football and an interest in the way sport connects people. With a familiarity with content creation and digital media, I’m also drawn to the energy of creator-led football and new formats of the game.',
-    caption: 'The person behind the decisions.', frame: 'PORTRAIT / AWAITING THE REAL MOMENT',
+    photoAlt: 'Yassine in his yellow referee kit, standing beside a goal on the football pitch.',
+    caption: 'The person behind the decisions.', frame: 'PORTRAIT / AT HOME ON THE PITCH',
     tags: ['Rooted in Tunisia', 'Driven by fairness', 'Looking beyond borders'],
   },
   philosophy: {

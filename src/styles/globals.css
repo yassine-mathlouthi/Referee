@@ -325,3 +325,18 @@ body::after { content: ''; position: fixed; inset: 0; z-index: 80; pointer-event
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
 @media (pointer: coarse) { .stadium-halo { filter: blur(40px); }.hero-contact { min-height: 44px; } }
+.hero-real-photo .hero-photo { filter: saturate(.7) brightness(.76); }
+.hero-real-photo .hero-art-caption { display: none; }
+.hero-real-photo .hero-art-shade { background: linear-gradient(90deg, #080a0b 0%, #080a0b80 20%, #080a0b0a 55%, #080a0b4d 100%), linear-gradient(0deg, #080a0b 0%, transparent 28%, transparent 80%, #080a0b 100%); }
+.about-image::after { content: ''; position: absolute; inset: 55% 0 0; background: linear-gradient(transparent, #080a0bd9); pointer-events: none; }
+.about-image-number, .about-image-corner { z-index: 1; }
+[dir="rtl"] .hero-real-photo .hero-art-shade { background: linear-gradient(270deg, #080a0b 0%, #080a0b80 20%, #080a0b0a 55%, #080a0b4d 100%), linear-gradient(0deg, #080a0b 0%, transparent 28%, transparent 80%, #080a0b 100%); }
+@media (max-width: 767px) {
+  .hero-real-photo { min-height: 1140px; }
+  .hero-real-photo .hero-art { inset: 620px 20px 110px; opacity: 1; }
+  .hero-real-photo .hero-art-shade { background: linear-gradient(0deg, #080a0b99, transparent 40%, #080a0b1a); }
+  .hero-real-photo .hero-photo { filter: saturate(.85) brightness(.9); }
+  [dir="rtl"] .hero-real-photo { min-height: 1250px; }
+  [dir="rtl"] .hero-real-photo .hero-art { inset: 720px 20px 110px; }
+  [dir="rtl"] .hero-real-photo .hero-art-shade { background: linear-gradient(0deg, #080a0b99, transparent 40%, #080a0b1a); }
+}

@@ -8,6 +8,7 @@ export const fr: Copy = {
   menu: 'Ouvrir le menu', close: 'Fermer', language: 'Langue', connect: 'Échangeons',
   intro: ['Précision.', 'Autorité.', 'Fair-play.'],
   hero: {
+    photoAlt: 'Yassine en maillot jaune d’arbitre, sifflant et indiquant une direction sur le terrain.',
     label: 'Sur le terrain. Dans l’instant.',
     first: 'PLUS QU’UN', second: 'ARBITRE.', third: 'LE GARDIEN', fourth: 'DU JEU.',
     body: 'Le football est bien plus qu’un jeu. C’est une responsabilité, une passion et un engagement pour l’équité.',
@@ -20,7 +21,8 @@ export const fr: Copy = {
     lead: 'L’amour du football. Le sens des responsabilités.',
     body: 'Je suis Yassine, arbitre de football en Tunisie. Pour moi, arbitrer, c’est être pleinement présent : lire le jeu, respecter les joueurs et aborder chaque décision avec calme et équité.',
     more: 'Mon parcours est porté par la passion du football et par sa capacité à rassembler. Ma familiarité avec la création de contenu et les médias numériques nourrit aussi mon intérêt pour les événements de créateurs et les nouveaux formats du jeu.',
-    caption: 'La personne derrière les décisions.', frame: 'PORTRAIT / EN ATTENTE DU VRAI MOMENT',
+    photoAlt: 'Yassine en tenue jaune d’arbitre, debout près d’un but sur le terrain.',
+    caption: 'La personne derrière les décisions.', frame: 'PORTRAIT / DANS MON ÉLÉMENT',
     tags: ['Ancré en Tunisie', 'Guidé par l’équité', 'Au-delà des frontières'],
   },
   philosophy: {
