@@ -1,4 +1,5 @@
 export const en = {
+  seo: { title: 'Yassine Mathlouthi | Football Referee', description: 'Explore the portfolio of Yassine Mathlouthi, a football referee based in Tunisia, featuring refereeing experience, match photography, and international collaboration opportunities.' },
   skip: 'Skip to content', skipIntro: 'Skip introduction', art: 'The art of control',
   name: 'Yassine Mathlouthi', profession: 'Football referee', country: 'Tunisia',
   nav: { about: 'About', experience: 'Experience', gallery: 'Gallery', contact: 'Contact' },

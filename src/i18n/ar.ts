@@ -1,6 +1,7 @@
 import type { Copy } from './en'
 
 export const ar: Copy = {
+  seo: { title: 'ياسين المثلوثي | حكم كرة قدم', description: 'اكتشف مسيرة ياسين المثلوثي، حكم كرة قدم من تونس، وصور المباريات وفرص التعاون في مسابقات كرة القدم الدولية.' },
   skip: 'انتقل إلى المحتوى', skipIntro: 'تجاوز المقدمة', art: 'فنّ إدارة اللعب',
   name: 'ياسين المثلوثي', profession: 'حكم كرة قدم', country: 'تونس',
   nav: { about: 'عنّي', experience: 'المسيرة', gallery: 'المعرض', contact: 'تواصل' },

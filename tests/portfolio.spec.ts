@@ -103,3 +103,15 @@ test('normal-motion page scrolls without errors or hiding content', async ({ pag
   }
   expect(errors).toEqual([])
 })
+
+test('SEO has truthful structured identity and translated titles', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await page.goto('/')
+  await expect(page).toHaveTitle('Yassine Mathlouthi | Football Referee')
+  const person = await page.locator('script[type="application/ld+json"]').textContent()
+  expect(JSON.parse(person!)).toMatchObject({ '@type': 'Person', name: profile.name, homeLocation: { name: 'Tunisia' } })
+  await page.getByRole('combobox').selectOption('fr')
+  await expect(page).toHaveTitle('Yassine Mathlouthi | Arbitre de football')
+  await page.getByRole('combobox').selectOption('ar')
+  await expect(page).toHaveTitle('ياسين المثلوثي | حكم كرة قدم')
+})

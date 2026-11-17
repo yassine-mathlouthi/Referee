@@ -16,6 +16,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useLayoutEffect(() => {
     document.documentElement.lang = language
     document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr'
+    document.title = dictionaries[language].seo.title
+    document.querySelector('meta[name="description"]')?.setAttribute('content', dictionaries[language].seo.description)
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', dictionaries[language].seo.title)
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', dictionaries[language].seo.description)
+    document.querySelector('meta[property="og:locale"]')?.setAttribute('content', { en: 'en_US', fr: 'fr_FR', ar: 'ar_TN' }[language])
     writeStorage('ym-language', language)
   }, [language])
   return <LanguageContext.Provider value={{ language, setLanguage, t: dictionaries[language] }}><MotionConfig reducedMotion="user">{children}</MotionConfig></LanguageContext.Provider>

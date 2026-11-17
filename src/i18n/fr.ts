@@ -1,6 +1,7 @@
 import type { Copy } from './en'
 
 export const fr: Copy = {
+  seo: { title: 'Yassine Mathlouthi | Arbitre de football', description: 'Découvrez le portfolio de Yassine Mathlouthi, arbitre de football basé en Tunisie : parcours, photographies de matchs et opportunités de collaboration internationale.' },
   skip: 'Aller au contenu', skipIntro: 'Passer l’introduction', art: 'L’art de la maîtrise',
   name: 'Yassine Mathlouthi', profession: 'Arbitre de football', country: 'Tunisie',
   nav: { about: 'À propos', experience: 'Parcours', gallery: 'Galerie', contact: 'Contact' },
