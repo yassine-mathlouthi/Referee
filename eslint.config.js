@@ -9,7 +9,7 @@ export default tseslint.config(
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    files: ['src/components/ui/GooeyNav/*.jsx'],
+    files: ['src/components/ui/GooeyNav/*.jsx', 'src/components/ui/SpotlightCard/*.jsx'],
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: { ecmaFeatures: { jsx: true } },

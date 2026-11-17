@@ -1,3 +1,4 @@
+import SpotlightCard from './SpotlightCard/SpotlightCard'
 import { ChevronDown } from 'lucide-react'
 import type { Match } from '../../data/matches'
 import { useLanguage } from '../../i18n/context'
@@ -10,7 +11,19 @@ export function MatchCard({ match }: { match: Match }) {
   const number = new Intl.NumberFormat(language)
   const date = new Intl.DateTimeFormat(language, { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC' })
 
-  return <SectionReveal className="match-record">
+  return <SectionReveal><SpotlightCard
+    className="match-record"
+    theme="dark"
+    spotlightColor="#c7ff36"
+    intensity={0.12}
+    spotlightSize={240}
+    softness={0.8}
+    borderGlow={0.55}
+    proximity={80}
+    smoothing={0.3}
+    ambient={false}
+    flare
+  >
     <div className="match-card-header">
       <time className="eyebrow" dateTime={match.date}>{date.format(new Date(`${match.date}T00:00:00Z`))}</time>
       <span className="eyebrow accent">{t.experience.types[match.matchType]}</span>
@@ -45,5 +58,5 @@ export function MatchCard({ match }: { match: Match }) {
         </dl>}
       </div>
     </details>
-  </SectionReveal>
+  </SpotlightCard></SectionReveal>
 }

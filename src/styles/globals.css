@@ -96,7 +96,8 @@ body::after { content: ''; position: fixed; inset: 0; z-index: 80; pointer-event
 .text-link { display: inline-flex; align-items: center; gap: 16px; font-size: 11px; padding-block: 14px; border-bottom: 1px solid #ffffff30; }
 .text-link:hover { color: #c7ff36; border-color: #c7ff36; }
 .match-grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: start; }
-.match-record { display: flex; flex-direction: column; min-height: 220px; padding: 18px 18px 0; background: #0d1112; border: 1px solid #ffffff16; }
+.match-record.spotlight-card { display: flex; flex-direction: column; min-height: 220px; padding: 18px 18px 0; background: #0d1112; border-radius: 14px; box-shadow: 0 12px 30px -24px #0009; }
+.match-record.spotlight-card:focus-within { outline: 1px solid #c7ff3670; outline-offset: 2px; }
 .match-card-header { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
 .match-card-header .eyebrow { font-size: 8px; line-height: 1.7; letter-spacing: .04em; }
 .match-card-header time { color: #a1adaf; }
@@ -141,7 +142,7 @@ body::after { content: ''; position: fixed; inset: 0; z-index: 80; pointer-event
 @media (max-width: 767px) {
   .match-stats > div { flex-direction: column; align-items: flex-start; padding: 14px 10px; gap: 6px; }.match-stats dd { font-size: 36px; }.match-stats dt { font-size: 9px; line-height: 1.6; }
   .match-grid { gap: 10px; }
-  .match-record { padding: 12px 12px 0; min-height: 224px; }
+  .match-record.spotlight-card { padding: 12px 12px 0; min-height: 224px; }
   .match-record h3 { font-size: 12px; }
   .match-card-header { flex-wrap: wrap; gap: 3px 8px; }
   .match-card-header .eyebrow { font-size: 8px; }
