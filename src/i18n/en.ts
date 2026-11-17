@@ -1,0 +1,61 @@
+export const en = {
+  skip: 'Skip to content', skipIntro: 'Skip introduction', art: 'The art of control',
+  name: 'Yassine Mathlouthi', profession: 'Football referee', country: 'Tunisia',
+  nav: { about: 'About', experience: 'Experience', gallery: 'Gallery', contact: 'Contact' },
+  menu: 'Open menu', close: 'Close', language: 'Language', connect: 'Let’s talk',
+  intro: ['Precision.', 'Authority.', 'Fair play.'],
+  hero: {
+    label: 'On the pitch. In the moment.',
+    first: 'NOT JUST', second: 'A REFEREE.', third: 'A GUARDIAN', fourth: 'OF THE GAME.',
+    body: 'Football is more than a game. It’s a responsibility, a passion, and a commitment to fairness.',
+    explore: 'Explore my journey', contact: 'Get in touch', scroll: 'Scroll to discover',
+    based: 'Based in Tunisia', available: 'Open to opportunities', index: '01 — THE IDENTITY',
+    pitch: 'A different perspective on the beautiful game.', coordinates: '36.8065° N / 10.1815° E',
+  },
+  about: {
+    label: '01 / Behind the whistle', title: 'THE GAME IS HUMAN.', accent: 'SO IS MY APPROACH.',
+    lead: 'A love for football. A responsibility to the game.',
+    body: 'I’m Yassine, a football referee from Tunisia. For me, refereeing means being fully present: reading the game, respecting its players, and bringing a calm, fair approach to every decision.',
+    more: 'My journey is driven by a passion for football and an interest in the way sport connects people. With a familiarity with content creation and digital media, I’m also drawn to the energy of creator-led football and new formats of the game.',
+    caption: 'The person behind the decisions.', frame: 'PORTRAIT / AWAITING THE REAL MOMENT',
+    tags: ['Rooted in Tunisia', 'Driven by fairness', 'Looking beyond borders'],
+  },
+  philosophy: {
+    label: '02 / The principles', title: 'CONTROL THE MOMENT.', accent: 'RESPECT THE GAME.',
+    values: [
+      { name: 'FAIRNESS', line: 'Every decision matters.', detail: 'The same game. The same rules. The same respect for every player.' },
+      { name: 'PRECISION', line: 'Attention to every moment.', detail: 'Stay present, read the movement, and give every moment the attention it deserves.' },
+      { name: 'RESPECT', line: 'For the game and everyone involved.', detail: 'Authority starts with composure. Football is at its best when respect goes both ways.' },
+    ],
+  },
+  experience: {
+    label: '03 / On the record', title: 'EXPERIENCE.', accent: 'NOT JUST A TITLE.',
+    intro: 'The decisions happen on the pitch. The story belongs here.',
+    pending: 'The match record is being prepared.',
+    body: 'Verified appointments, competition details, and match photography will be added here. Only real experience. No inflated numbers.',
+    note: 'A record built on real moments', versus: 'vs', view: 'Discuss an appointment',
+  },
+  gallery: {
+    label: '04 / Inside the lines', title: 'THE GAME.', accent: 'IN PERSPECTIVE.',
+    intro: 'A space for the moments that tell the story. Original match photography is coming.',
+    concept: 'Visual study · Photography to follow', open: 'Open frame', previous: 'Previous frame', next: 'Next frame',
+    counter: 'of', titles: ['THE FIELD OF PLAY', 'EVERY ANGLE MATTERS', 'A MOMENT OF CLARITY'],
+    descriptions: ['Abstract football pitch lines beneath stadium lighting.', 'Abstract diagonal signal lines in a dark editorial composition.', 'An abstract centre circle and the geometry of a football pitch.'],
+  },
+  availability: {
+    label: '05 / Beyond borders', title: 'READY FOR', accent: 'THE NEXT WHISTLE.',
+    body: 'Based in Tunisia. Open to discussing refereeing opportunities at football competitions and creator-led events internationally.',
+    note: 'Travel is subject to event arrangements, visa requirements, and availability.',
+    cta: 'Let’s work together', origin: 'Tunisia / The starting point',
+    audiences: ['Football tournaments', 'Creator-led events', 'Charity matches', 'Small-sided leagues'],
+  },
+  contact: {
+    label: '06 / Start a conversation', title: 'LET’S MAKE THE', accent: 'NEXT MATCH COUNT.',
+    body: 'A tournament. A new format. A shared love of the game. Let’s talk about what comes next.',
+    pending: 'Contact details are being prepared. Direct contact links will appear here as soon as they’re available.',
+    email: 'Send an email', whatsapp: 'WhatsApp', linkedin: 'LinkedIn', youtube: 'YouTube', cv: 'Download referee CV',
+  },
+  footer: { top: 'Back to top', rights: 'All rights reserved.', line: 'Fairness is always in play.' },
+}
+
+export type Copy = typeof en
