@@ -8,7 +8,12 @@
   background: #080a0b;
 }
 .campaign-atmosphere { position: absolute; z-index: -1; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 78% 35%, #28312335, transparent 55%), linear-gradient(90deg, transparent calc(50% - 1px), #ffffff04 50%, transparent calc(50% + 1px)); }
-.campaign-layout { display: grid; grid-template-columns: 1.08fr 1fr; align-items: center; gap: 20px; position: relative; }
+.campaign-particles { position: absolute; inset: 0; z-index: 0; pointer-events: none; mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 75%, transparent); }
+.campaign-particle-toggle { display: inline-grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; border: 1px solid #ffffff25; border-radius: 50%; background: #080a0b80; color: #a8b3ad; }
+.campaign-particle-toggle:hover, .campaign-particle-toggle:focus-visible { color: #c7ff36; border-color: #c7ff36; }
+.campaign-footer { position: relative; z-index: 1; flex-wrap: wrap; }
+@media (prefers-reduced-motion: reduce) { .campaign-particles { display: none; } }
+.campaign-layout { z-index: 1; display: grid; grid-template-columns: 1.08fr 1fr; align-items: center; gap: 20px; position: relative; }
 .campaign-copy { position: relative; z-index: 2; padding-block: 28px 40px; }
 .campaign-edition { display: flex; align-items: center; gap: 12px; color: #aab4ae; font-size: 9px; line-height: 1.7; }
 .campaign-rule { width: 36px; height: 1px; background: #c7ff36; flex-shrink: 0; }

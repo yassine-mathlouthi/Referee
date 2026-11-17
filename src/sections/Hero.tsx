@@ -1,16 +1,18 @@
-import { ArrowDown, ArrowUpRight, Crosshair } from 'lucide-react'
-import { useRef } from 'react'
+import { ArrowDown, ArrowUpRight, Crosshair, Pause, Play } from 'lucide-react'
+import { useRef, useState } from 'react'
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { useLanguage } from '../i18n/context'
 import { profile } from '../data/profile'
 import { PitchArt } from '../components/ui/PitchArt'
 import { GlowAction } from '../components/ui/GlowAction'
+import { HeroParticles } from '../components/motion/HeroParticles'
 import { TextReveal } from '../components/motion/TextReveal'
 import '../styles/hero.css'
 
 export function Hero({ ready = true }: { ready?: boolean }) {
   const { t } = useLanguage()
   const reduced = useReducedMotion()
+  const [particlesPaused, setParticlesPaused] = useState(false)
   const root = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: root, offset: ['start start', 'end start'] })
   const mediaY = useTransform(scrollYProgress, [0, 1], reduced ? [0, 0] : [0, 28])
@@ -23,6 +25,7 @@ export function Hero({ ready = true }: { ready?: boolean }) {
 
   return <section id="top" className="campaign-hero" ref={root} aria-labelledby="hero-title">
     <div className="campaign-atmosphere" aria-hidden="true" />
+    {ready && reduced === false && !particlesPaused && <HeroParticles/>}
     <div className="container campaign-layout">
       <div className="campaign-copy">
         <motion.div className="campaign-edition eyebrow" {...entrance(.05)}>
@@ -63,6 +66,13 @@ export function Hero({ ready = true }: { ready?: boolean }) {
     <motion.div className="container campaign-footer" {...entrance(.65)}>
       <div className="campaign-availability"><span className="status-dot"/><span>{t.hero.available}</span></div>
       <span className="campaign-footer-line" aria-hidden="true"/>
+      {ready && reduced === false && <button
+        type="button"
+        className="campaign-particle-toggle"
+        onClick={() => setParticlesPaused(value => !value)}
+        aria-label={particlesPaused ? t.hero.resumeBackground : t.hero.pauseBackground}
+        title={particlesPaused ? t.hero.resumeBackground : t.hero.pauseBackground}
+      >{particlesPaused ? <Play size={14} aria-hidden="true"/> : <Pause size={14} aria-hidden="true"/>}</button>}
       <a className="campaign-scroll" href="#about"><span>{t.hero.scroll}</span><span className="campaign-scroll-icon"><ArrowDown size={15} aria-hidden="true"/></span></a>
     </motion.div>
   </section>

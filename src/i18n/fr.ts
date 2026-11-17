@@ -14,6 +14,7 @@ export const fr: Copy = {
     first: 'PLUS QU’UN', second: 'ARBITRE.', third: 'LE GARDIEN', fourth: 'DU JEU.',
     body: 'Le football est bien plus qu’un jeu. C’est une responsabilité, une passion et un engagement pour l’équité.',
     explore: 'Voir mon parcours', contact: 'Solliciter mon arbitrage', scroll: 'Défiler pour découvrir',
+    pauseBackground: 'Mettre en pause l’animation de fond', resumeBackground: 'Reprendre l’animation de fond',
     based: 'Basé en Tunisie', available: 'Ouvert aux opportunités', index: '01 — L’IDENTITÉ',
     pitch: 'Un autre regard sur le beau jeu.', coordinates: '36.8065° N / 10.1815° E',
   },
