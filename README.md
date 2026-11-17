@@ -36,6 +36,12 @@ The appointment list is intentionally empty. Add records only after verifying co
 
 ### Add real photographs
 
+The portfolio now includes all **11 supplied photographs**: the whistle-action image in the hero, the portrait beside the goal in About, and nine curated gallery images. Each has a 640px WebP and a larger WebP variant; the full collection is approximately 3.3 MB, loaded responsively and lazily outside the hero. Excess sky was cropped where helpful, while source files in Downloads were left untouched.
+
+The gallery covers player dialogue, assistant-referee movement, pre-match briefing, signals, tracking play, attention to a player, touchline conversation, and a matchday portrait. Captions describe visible scenes only: they do not imply verified competitions, appointments or dates.
+
+To replace or extend the collection:
+
 1. Put your own optimized AVIF/WebP images in `public/images/`.
 2. Set `heroImage` for a background portrait, `heroCutout` for an optional transparent foreground, and `heroPosition` for background cropping in `profile.ts`.
 3. Set `aboutImage` to the portrait path.
@@ -100,7 +106,7 @@ SEO includes static English metadata for crawlers, localized browser metadata, a
 
 ## Launch checklist
 
-- Supply real portraits, gallery photographs, verified match records and contact details.
+- Add verified match records and real contact details; review the supplied photography and crops.
 - Review biography and translations with Yassine.
 - Set the real production origin and deploy through your Vercel account.
 - Check actual mobile devices, screen-reader navigation and final image performance.

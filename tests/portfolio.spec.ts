@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test'
 import AxeBuilder from '@axe-core/playwright'
 import { getContactLinks } from '../src/lib/contact'
 import { profile } from '../src/data/profile'
+import { gallery } from '../src/data/gallery'
 
 test('only valid configured contact destinations are exposed', () => {
   expect(getContactLinks()).toEqual([])
@@ -66,13 +67,13 @@ test('page meets automated accessibility checks', async ({ page }) => {
 test('gallery supports keyboard navigation, Escape and focus restoration', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/')
-  const frame = page.getByRole('button', { name: 'Open frame: THE FIELD OF PLAY' })
+  const frame = page.getByRole('button', { name: 'Open frame: READING THE GAME' })
   await frame.click()
   await expect(page.getByRole('dialog')).toBeVisible()
   await page.keyboard.press('ArrowRight')
-  await expect(page.locator('#lightbox-title')).toHaveText('EVERY ANGLE MATTERS')
+  await expect(page.locator('#lightbox-title')).toHaveText('ALONG THE LINE')
   await page.keyboard.press('ArrowLeft')
-  await expect(page.locator('#lightbox-title')).toHaveText('THE FIELD OF PLAY')
+  await expect(page.locator('#lightbox-title')).toHaveText('READING THE GAME')
   const audit = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()
   expect(audit.violations).toEqual([])
   await page.keyboard.press('Escape')
@@ -132,3 +133,26 @@ for (const language of ['fr', 'ar']) {
     expect(audit.violations).toEqual([])
   })
 }
+
+test('real photography loads in the hero, portrait and every gallery frame', async ({ page }) => {
+  const failures: string[] = []
+  page.on('response', response => {
+    if (response.url().includes('/images/') && !response.ok()) failures.push(response.url())
+  })
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await page.goto('/')
+  const hero = page.locator('.hero-photo')
+  await expect.poll(() => hero.evaluate(image => (image as HTMLImageElement).naturalWidth)).toBeGreaterThan(0)
+  const portrait = page.locator('.about-image img')
+  await portrait.scrollIntoViewIfNeeded()
+  await expect.poll(() => portrait.evaluate(image => (image as HTMLImageElement).naturalWidth)).toBeGreaterThan(0)
+  await expect(page.locator('.gallery-frame img')).toHaveCount(gallery.length)
+  for (const image of await page.locator('.gallery-frame img').all()) {
+    await image.scrollIntoViewIfNeeded()
+    await expect.poll(() => image.evaluate(element => (element as HTMLImageElement).naturalWidth)).toBeGreaterThan(0)
+    await expect(image).toHaveAttribute('alt', /.+/)
+  }
+  await expect(page.locator('#gallery')).not.toContainText('photography is coming')
+  await expect(page.locator('#about')).not.toContainText('AWAITING')
+  expect(failures).toEqual([])
+})

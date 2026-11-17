@@ -23,18 +23,22 @@
 - [x] Vercel build configuration, static caching and security headers.
 - [x] README with editing, photography, testing and deployment instructions.
 - [x] Feature-by-feature commits pushed to `origin/main` using the personal GitHub identity.
+- [x] Eleven supplied photographs optimized into responsive WebP assets: hero, About and nine gallery frames.
+- [x] Updated English, French and Arabic photography captions and removed outdated pending-photo copy.
+- [x] Verified photo loading and manually inspected mobile/desktop crops.
 
 ## Verification
 
 - Production build, strict TypeScript and ESLint pass.
 - Playwright tests cover responsive layouts, internationalization, gallery/navigation keyboard behavior, browser errors and SEO.
 - Automated axe WCAG A/AA checks pass for English, French, Arabic and the open lightbox.
-- Initial JavaScript is about 136 KB gzip; desktop GSAP enhancements are separate chunks.
+- Initial JavaScript is about 138 KB gzip; desktop GSAP enhancements are separate chunks.
+- All 25 production browser tests pass, including the real-photography loading check.
 - No invented appointments, statistics, certifications, testimonials, professional affiliations or contact identities.
 
 ## Awaiting real content / account access
 
-- [ ] Real photographs and appropriate image descriptions.
+- [x] Supplied photographs and multilingual image descriptions integrated.
 - [ ] Verified match appointments.
 - [ ] Actual email, WhatsApp, social profiles and CV.
 - [ ] Owner review of copy and translations.
