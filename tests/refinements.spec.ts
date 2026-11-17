@@ -30,7 +30,7 @@ for (const width of [360, 768, 1440]) {
   })
 }
 
-test('appointments prioritize roles, show full club names and explain youth labels', async ({ page }) => {
+test('appointments prioritize roles and full club names without explanatory clutter', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/#experience')
   const card = page.locator('#match-history > li').first()
@@ -38,7 +38,5 @@ test('appointments prioritize roles, show full club names and explain youth labe
   await expect(card.locator('.match-fixture')).toContainText('Jeunesse Sportive d’El Omrane')
   await expect(card.locator('.match-fixture')).toContainText('Club Sportif de Hammam Lif')
   expect(await card.evaluate(element => Boolean(element.querySelector('.match-meta')!.compareDocumentPosition(element.querySelector('.match-fixture')!) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true)
-  await expect(page.locator('.competition-guide')).toContainText('under-19')
-  await expect(page.locator('.competition-guide')).toContainText('under-17')
-  await expect(page.locator('.competition-guide')).toContainText('do not indicate senior')
+  await expect(page.locator('.competition-guide, .match-source')).toHaveCount(0)
 })

@@ -21,15 +21,7 @@ export function Experience() {
       <SectionReveal>
         <p className="eyebrow match-season">{t.experience.recordLabel}</p>
         <dl className="match-stats">{(['played', 'referee', 'assistant'] as const).map(key => <div key={key}><dt>{t.experience[key]}</dt><dd>{number.format(totals[key])}</dd></div>)}</dl>
-        <p className="match-source body-copy">{t.experience.source}</p>
       </SectionReveal>
-      <aside className="competition-guide" aria-labelledby="competition-guide-title">
-        <h3 id="competition-guide-title" className="eyebrow">{t.experience.guideTitle}</h3>
-        <dl>
-          <div><dt>{t.experience.guideLeagueLabel}</dt><dd>{t.experience.guideLeague}</dd></div>
-          <div><dt>{t.experience.guideAgeLabel}</dt><dd>{t.experience.guideAge}</dd></div>
-        </dl>
-      </aside>
       <div className="match-filters" role="group" aria-label={t.experience.filter}>{(['all', 'referee', 'assistant'] as const).map(value => <button type="button" key={value} aria-pressed={role === value} onClick={() => { setRole(value); setExpanded(false) }}>{value === 'all' ? t.experience.all : t.experience.roles[value]}</button>)}</div>
       <ol id="match-history" className="match-grid" aria-label={t.experience.list}>{visible.map(match => <li key={match.id} data-match-id={match.id} data-role={match.role} data-status={match.status}>
         <MatchCard match={match}/>
