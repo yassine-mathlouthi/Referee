@@ -12,6 +12,7 @@ export const en = {
     first: 'NOT JUST', second: 'A REFEREE.', third: 'A GUARDIAN', fourth: 'OF THE GAME.',
     body: 'Football is more than a game. It’s a responsibility, a passion, and a commitment to fairness.',
     explore: 'View my experience', contact: 'Book me for an event', scroll: 'Scroll to discover',
+    carouselLabel: 'Yassine’s match-day photographs', carouselHint: 'Drag to explore · Arrow keys to navigate · Enter to enlarge · Esc to close',
     pauseBackground: 'Pause background animation', resumeBackground: 'Resume background animation',
     based: 'Based in Tunisia', available: 'Open to opportunities', index: '01 — THE IDENTITY',
     pitch: 'A different perspective on the beautiful game.', coordinates: '36.8065° N / 10.1815° E',

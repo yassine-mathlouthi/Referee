@@ -35,6 +35,19 @@
 .campaign-experience:hover { color: #c7ff36; border-color: #c7ff36; }
 .campaign-experience svg { transition: transform .25s; }
 .campaign-experience:hover svg { transform: translate(2px, -2px); }
+.campaign-carousel { height: clamp(440px, 42vw, 620px); position: relative; border-block: 1px solid #ffffff12; background: radial-gradient(ellipse at center, #c7ff3609, transparent 70%); }
+.campaign-carousel .flex-carousel { overscroll-behavior: auto; }
+.campaign-carousel .flex-carousel:focus-visible { box-shadow: inset 0 0 0 2px #c7ff36; border-radius: 12px; }
+.campaign-carousel .flex-carousel__title { font-family: var(--font-sans); font-size: 13px; }
+.campaign-carousel .flex-carousel__subtitle { font-size: 10px; margin-top: 4px; }
+.campaign-carousel .flex-carousel__count { color: #c7ff36; opacity: .8; }
+.campaign-carousel-hint { text-align: center; color: #9aa5a0; font-size: 8px; margin: 12px 0 0; }
+.hero-photo-strip { display: flex; gap: 12px; height: 100%; align-items: center; overflow-x: auto; scroll-snap-type: x mandatory; padding: 24px 16px; }
+.hero-photo-strip:focus-visible { outline: 2px solid #c7ff36; outline-offset: -2px; }
+.hero-photo-strip figure { flex: 0 0 76%; margin: 0; scroll-snap-align: center; min-width: 0; }
+.hero-photo-strip img { width: 100%; height: clamp(260px, 30vw, 400px); object-fit: cover; object-position: center 35%; border-radius: 14px; }
+.hero-photo-strip figcaption { padding-top: 14px; text-align: center; font-size: 12px; color: #bbc5bc; }
+@media (max-width: 767px) { .campaign-carousel { height: 440px; } }
 .campaign-visual { position: relative; min-width: 0; padding-inline-start: 14px; }
 .campaign-media-label, .campaign-media-footer { display: flex; align-items: center; gap: 10px; color: #9aa5a0; font-size: 8px; letter-spacing: .1em; line-height: 1.7; }
 .campaign-media-label { padding-bottom: 14px; }

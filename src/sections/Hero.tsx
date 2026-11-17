@@ -1,9 +1,8 @@
 import { ArrowDown, ArrowUpRight, Crosshair, Pause, Play } from 'lucide-react'
-import { useRef, useState } from 'react'
-import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
+import { useState } from 'react'
+import { motion, useReducedMotion } from 'motion/react'
 import { useLanguage } from '../i18n/context'
-import { profile } from '../data/profile'
-import { PitchArt } from '../components/ui/PitchArt'
+import { HeroPhotoCarousel } from '../components/motion/HeroPhotoCarousel'
 import { GlowAction } from '../components/ui/GlowAction'
 import { HeroParticles } from '../components/motion/HeroParticles'
 import { TextReveal } from '../components/motion/TextReveal'
@@ -13,9 +12,6 @@ export function Hero({ ready = true }: { ready?: boolean }) {
   const { t } = useLanguage()
   const reduced = useReducedMotion()
   const [particlesPaused, setParticlesPaused] = useState(false)
-  const root = useRef<HTMLElement>(null)
-  const { scrollYProgress } = useScroll({ target: root, offset: ['start start', 'end start'] })
-  const mediaY = useTransform(scrollYProgress, [0, 1], reduced ? [0, 0] : [0, 28])
   const visible = ready || reduced
   const entrance = (delay: number) => ({
     initial: reduced ? false as const : { opacity: 0, y: 16 },
@@ -23,7 +19,7 @@ export function Hero({ ready = true }: { ready?: boolean }) {
     transition: { duration: .8, delay: reduced ? 0 : delay, ease: [.22, 1, .36, 1] as const },
   })
 
-  return <section id="top" className="campaign-hero" ref={root} aria-labelledby="hero-title">
+  return <section id="top" className="campaign-hero" aria-labelledby="hero-title">
     <div className="campaign-atmosphere" aria-hidden="true" />
     {ready && reduced === false && !particlesPaused && <HeroParticles/>}
     <div className="container campaign-layout">
@@ -49,17 +45,8 @@ export function Hero({ ready = true }: { ready?: boolean }) {
         </motion.div>
       </div>
       <motion.div className="campaign-visual" {...entrance(.18)}>
-        <div className="campaign-media-label eyebrow"><Crosshair size={14} aria-hidden="true"/><span>{t.art}</span><span>YM / 01</span></div>
-        <div className="campaign-media">
-          <motion.div className="campaign-image-layer" style={{ y: mediaY }}>
-            {profile.heroImage
-              ? <img className="hero-photo" src={profile.heroImage} srcSet={profile.heroSrcSet} sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 999px) 70vw, 48vw" width={941} height={1372} fetchPriority="high" alt={t.hero.photoAlt}/>
-              : <PitchArt/>}
-          </motion.div>
-          <div className="campaign-media-shade" aria-hidden="true"/>
-          <div className="campaign-pitch-mark" aria-hidden="true"><span/></div>
-          <div className="campaign-photo-caption"><span className="eyebrow">{t.profession}</span><span className="campaign-monogram" aria-hidden="true">YM<span>01</span></span></div>
-        </div>
+        <div className="campaign-media-label eyebrow"><Crosshair size={14} aria-hidden="true"/><span>{t.art}</span><span>YM / 01—04</span></div>
+        <HeroPhotoCarousel ready={ready}/>
         <div className="campaign-media-footer eyebrow"><span>{t.country}</span><bdi>{t.hero.coordinates}</bdi></div>
       </motion.div>
     </div>
