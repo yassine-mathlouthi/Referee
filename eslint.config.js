@@ -9,6 +9,14 @@ export default tseslint.config(
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
+    files: ['src/components/ui/GooeyNav/*.jsx'],
+    languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: { ecmaFeatures: { jsx: true } },
+      globals: globals.browser
+    }
+  },
+  {
     files: ['**/*.{ts,tsx}'],
     languageOptions: { globals: globals.browser },
     plugins: { 'react-hooks': hooks, 'react-refresh': refresh },

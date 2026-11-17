@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { useLanguage, type Language } from '../../i18n/context'
+import GooeyNav from '../ui/GooeyNav/GooeyNav'
 import { Monogram } from '../ui/Monogram'
 import { useDialog } from '../ui/useDialog'
 
@@ -25,7 +26,22 @@ export function Navbar() {
   return <>
     <header className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
       <a href="#top" className="brand" aria-label={t.name}><Monogram/><span>{t.art}</span></a>
-      <nav className="desktop-nav" aria-label={t.menu}>{links.map(([id, text]) => <a key={id} href={`#${id}`} aria-current={active === id ? 'location' : undefined}>{text}</a>)}</nav>
+      <GooeyNav
+        className="desktop-nav"
+        ariaLabel={t.menu}
+        items={links.map(([id, label]) => ({ label, href: `#${id}` }))}
+        activeIndex={Math.max(0, links.findIndex(([id]) => id === active))}
+        onChange={index => setActive(links[index][0])}
+        theme="dark"
+        color="#c7ff36"
+        activeTextColor="#080a0b"
+        size="sm"
+        particleCount={15}
+        spread={40}
+        animationTime={600}
+        gooeyness={0.5}
+        wobble={0.5}
+      />
       <div className="nav-actions">{languages}<a className="nav-cta" href="#contact">{t.connect}<ArrowUpRight size={14}/></a><button className="menu-toggle" aria-label={t.menu} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(true)}><Menu size={22}/></button></div>
     </header>
     <dialog id="mobile-menu" className="mobile-menu" ref={ref} onCancel={onCancel} aria-label={t.menu}>

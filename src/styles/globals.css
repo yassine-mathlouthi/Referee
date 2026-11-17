@@ -270,10 +270,10 @@ body::after { content: ''; position: fixed; inset: 0; z-index: 80; pointer-event
 .brand { display: flex; align-items: center; gap: 18px; }
 .brand svg { width: 37px; height: 30px; color: #c7ff36; }
 .brand > span { font: 8px var(--font-mono); text-transform: uppercase; letter-spacing: .14em; max-width: 85px; line-height: 1.7; }
-.desktop-nav { display: flex; gap: 32px; }
-.desktop-nav a { color: #aeb5b8; font-size: 11px; position: relative; padding-block: 20px; transition: color .2s; }
-.desktop-nav a:hover, .desktop-nav a[aria-current] { color: #f5f7f7; }
-.desktop-nav a[aria-current]::after { content: ''; position: absolute; bottom: 9px; left: 0; width: 16px; height: 2px; background: #c7ff36; }
+.desktop-nav.gooey-nav { display: inline-flex; --gn-font: 11px; --gn-x: 12px; --gn-y: 13px; flex-shrink: 0; }
+.desktop-nav .gooey-nav__list { flex-wrap: nowrap; }
+.desktop-nav .gooey-nav__link { min-height: 44px; }
+.desktop-nav .gooey-nav__item[data-active] > .gooey-nav__link { color: #080a0b; }
 .nav-actions { display: flex; align-items: center; gap: 22px; }
 .language-select select { border: 0; padding: 10px 2px; background: transparent; color: #b4babb; font: 10px var(--font-mono); cursor: pointer; }
 .language-select { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
@@ -296,7 +296,7 @@ body::after { content: ''; position: fixed; inset: 0; z-index: 80; pointer-event
 @media (max-width: 1023px) { .brand > span { display: none; }.desktop-nav { gap: 22px; } }
 @media (max-width: 767px) {
   .navbar { top: 12px; left: 12px; right: 12px; height: 60px; padding-inline: 10px; }
-  .desktop-nav { display: none; }
+  .desktop-nav.gooey-nav { display: none; }
   .nav-cta { max-width: 150px; padding: 8px 10px; font-size: 9px; line-height: 1.5; }
   .nav-cta svg { display: none; }
   .menu-toggle { display: inline-flex; }
