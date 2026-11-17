@@ -45,10 +45,9 @@ export const matches: Match[] = [
 ]
 
 export function summarizeMatches(records: readonly Match[]) {
-  const played = records.filter(match => match.status === 'played')
   return {
-    played: played.length,
-    referee: played.filter(match => match.role === 'referee').length,
-    assistant: played.filter(match => match.role === 'assistant').length,
+    appointments: records.length,
+    referee: records.filter(match => match.role === 'referee').length,
+    assistant: records.filter(match => match.role === 'assistant').length,
   }
 }

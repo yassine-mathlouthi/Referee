@@ -42,7 +42,7 @@ export const fr: Copy = {
     body: 'Les photos de matchs sont présentées ci-dessous. Les désignations vérifiées et les détails des compétitions seront ajoutés ici. Du vécu, sans chiffres gonflés.',
     note: 'Un parcours fait de vrais moments', versus: 'contre', view: 'Discuter d’une désignation',
     recordLabel: '2026 / Carnet de matchs',
-    played: 'Matchs joués', referee: 'Comme arbitre', assistant: 'Comme arbitre assistant',
+    appointments: 'Désignations', referee: 'Comme arbitre', assistant: 'Comme arbitre assistant',
     all: 'Toutes les désignations', filter: 'Filtrer par rôle', list: 'Désignations de matchs',
     showAll: 'Voir tout le parcours', showLess: 'Voir les matchs récents', result: 'Score final',
     absent: 'Adversaire absent', absentNote: 'L’Union sportive de Carthage ne s’est pas présentée. Aucun résultat enregistré.',

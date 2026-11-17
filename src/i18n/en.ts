@@ -40,7 +40,7 @@ export const en = {
     body: 'Match photography is on display below. Verified appointments and competition details will be added here. Only real experience. No inflated numbers.',
     note: 'A record built on real moments', versus: 'vs', view: 'Discuss an appointment',
     recordLabel: '2026 / Match log',
-    played: 'Matches played', referee: 'As referee', assistant: 'As assistant referee',
+    appointments: 'Appointments', referee: 'As referee', assistant: 'As assistant referee',
     all: 'All appointments', filter: 'Filter by role', list: 'Match appointments',
     showAll: 'View full history', showLess: 'Show recent matches', result: 'Final score',
     absent: 'Opponent absent', absentNote: 'Union Sportive de Carthage did not attend. No result recorded.',

@@ -18,14 +18,14 @@ test('all supplied appointments retain valid dates and distinct identities', () 
   expect(matches.filter(match => match.date === '2026-11-15')).toHaveLength(2)
 })
 
-test('opponent absence is never represented as a result or a played match', () => {
+test('opponent absence has no result but counts toward appointment totals', () => {
   const absent = matches.filter(match => match.status === 'opponentAbsent')
   expect(absent).toHaveLength(1)
   expect(absent[0].date).toBe('2026-05-17')
   expect(absent[0].awayTeam).toBe('Union Sportive de Carthage (USC)')
   expect(absent[0]).not.toHaveProperty('score')
-  expect(summarizeMatches(matches)).toEqual({ played: 15, referee: 5, assistant: 10 })
-  expect(summarizeMatches([])).toEqual({ played: 0, referee: 0, assistant: 0 })
+  expect(summarizeMatches(matches)).toEqual({ appointments: 16, referee: 5, assistant: 11 })
+  expect(summarizeMatches([])).toEqual({ appointments: 0, referee: 0, assistant: 0 })
 })
 
 test('reported cards, penalty and score order are preserved', () => {
@@ -40,7 +40,7 @@ test('reported cards, penalty and score order are preserved', () => {
 test('match grid shows accurate totals, expands all dates and filters appointments', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/#experience')
-  await expect(page.locator('.match-stats dd')).toHaveText(['15', '5', '10'])
+  await expect(page.locator('.match-stats dd')).toHaveText(['16', '5', '11'])
   await expect(page.locator('#match-history > li')).toHaveCount(6)
   await page.getByRole('button', { name: /^View full history/ }).click()
   await expect(page.locator('#match-history > li')).toHaveCount(16)
@@ -71,7 +71,7 @@ test('match roles and competition types translate in French and Arabic', async (
   await page.getByRole('combobox').selectOption('ar')
   await expect(page.locator('html')).toHaveAttribute('dir', 'rtl')
   await expect(page.locator('#match-history')).toContainText('ركلات جزاء')
-  await expect(page.locator('.match-stats dd').first()).toHaveText(await page.evaluate(() => new Intl.NumberFormat('ar').format(15)))
+  await expect(page.locator('.match-stats dd').first()).toHaveText(await page.evaluate(() => new Intl.NumberFormat('ar').format(16)))
 })
 
 for (const width of [360, 768]) {
