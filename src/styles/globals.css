@@ -40,6 +40,11 @@ body::after { content: ''; position: fixed; inset: 0; z-index: 80; pointer-event
 .button-outline:hover { border-color: #c7ff36; color: #c7ff36; }
 .text-clip { display: block; overflow: hidden; }
 .text-reveal { display: block; }
+.intro { position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; background: #080a0b; }
+.intro-skip { position: absolute; top: 36px; right: 36px; background: none; border: 0; padding: 15px; color: #9aa5aa; }
+.intro-mark { color: #c7ff36; width: 70px; }
+.intro-line { width: min(60vw, 500px); height: 1px; background: linear-gradient(90deg, transparent, #c7ff36, transparent); }
+.intro-words { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; font: 600 clamp(24px, 4vw, 44px) var(--font-display); text-transform: uppercase; }
 .pitch-art { position: relative; overflow: hidden; width: 100%; height: 100%; background: radial-gradient(ellipse at 55% 40%, #243014 0%, #101610 35%, #0a0e0d 70%); }
 .stadium-halo { position: absolute; width: 100%; height: 25%; top: 16%; left: 20%; background: #b5ff3333; filter: blur(65px); transform: rotate(-35deg); }
 .pitch-drawing { position: absolute; width: 115%; height: 115%; left: -5%; top: -5%; transform: perspective(800px) rotateX(36deg) rotateZ(-28deg); }
