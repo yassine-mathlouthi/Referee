@@ -3,6 +3,8 @@ import { matches, summarizeMatches } from '../src/data/matches'
 
 test('all supplied appointments retain valid dates and distinct identities', () => {
   expect(matches).toHaveLength(16)
+  const dates = matches.map(match => match.date)
+  expect(dates).toEqual([...dates].sort())
   expect(new Set(matches.map(match => match.id)).size).toBe(16)
   for (const match of matches) {
     expect(new Date(`${match.date}T00:00:00Z`).toISOString().slice(0, 10)).toBe(match.date)
