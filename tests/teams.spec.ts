@@ -44,6 +44,7 @@ test('badges load from this site and their sources are keyboard-accessible', asy
     await expect.poll(() => badge.evaluate(element => (element as HTMLImageElement).naturalWidth)).toBeGreaterThan(0)
     await expect(badge).toHaveAttribute('src', /^\/team-logos\//)
     await expect(badge).toHaveAttribute('alt', '')
+    await expect(badge.locator('..')).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)')
   }
   const summary = page.locator('.team-sources summary')
   await summary.focus()
