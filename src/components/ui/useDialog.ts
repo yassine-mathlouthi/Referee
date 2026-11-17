@@ -10,7 +10,18 @@ export function useDialog(open: boolean, onClose: () => void) {
     dialog.showModal()
     const overflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
+    const cycleFocus = (event: KeyboardEvent) => {
+      if (event.key !== 'Tab') return
+      const controls = [...dialog.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), select, input, textarea, [tabindex="0"]')]
+        .filter(element => element.getClientRects().length > 0)
+      const first = controls[0], last = controls[controls.length - 1]
+      if (!first) { event.preventDefault(); dialog.focus(); return }
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus() }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus() }
+    }
+    dialog.addEventListener('keydown', cycleFocus)
     return () => {
+      dialog.removeEventListener('keydown', cycleFocus)
       dialog.close()
       document.body.style.overflow = overflow
       previous?.focus({ preventScroll: true })

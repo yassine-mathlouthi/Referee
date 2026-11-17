@@ -27,6 +27,10 @@ test('mobile menu contains focus, closes with Escape, and follows anchors', asyn
   const toggle = page.getByRole('button', { name: 'Open menu' })
   await toggle.click()
   await expect(page.getByRole('dialog')).toBeVisible()
+  for (let i = 0; i < 8; i++) {
+    await page.keyboard.press('Tab')
+    expect(await page.getByRole('dialog').evaluate(dialog => dialog.contains(document.activeElement))).toBe(true)
+  }
   await page.keyboard.press('Escape')
   await expect(page.getByRole('dialog')).not.toBeVisible()
   await expect(toggle).toBeFocused()
@@ -44,7 +48,9 @@ for (const width of [360, 390, 768, 1024, 1440]) {
     await page.emulateMedia({ reducedMotion: 'reduce' })
     await page.goto('/')
     await expect(page.locator('h1')).toBeVisible()
+    await page.evaluate(() => document.fonts.ready)
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+    expect(await page.locator('.footer-wordmark').evaluate(el => el.scrollWidth <= el.clientWidth + 1)).toBe(true)
     expect(errors).toEqual([])
   })
 }
@@ -115,3 +121,14 @@ test('SEO has truthful structured identity and translated titles', async ({ page
   await page.getByRole('combobox').selectOption('ar')
   await expect(page).toHaveTitle('ياسين المثلوثي | حكم كرة قدم')
 })
+
+for (const language of ['fr', 'ar']) {
+  test(`${language} meets automated accessibility checks`, async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' })
+    await page.goto('/')
+    await page.getByRole('combobox').selectOption(language)
+    await page.evaluate(() => document.fonts.ready)
+    const audit = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()
+    expect(audit.violations).toEqual([])
+  })
+}
