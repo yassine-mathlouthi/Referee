@@ -45,6 +45,58 @@ body::after { content: ''; position: fixed; inset: 0; z-index: 80; pointer-event
 .intro-mark { color: #c7ff36; width: 70px; }
 .intro-line { width: min(60vw, 500px); height: 1px; background: linear-gradient(90deg, transparent, #c7ff36, transparent); }
 .intro-words { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; font: 600 clamp(24px, 4vw, 44px) var(--font-display); text-transform: uppercase; }
+.skip-link { position: fixed; z-index: 110; top: 10px; left: 15px; transform: translateY(-180%); background: #c7ff36; color: #080a0b; padding: 16px; }
+.skip-link:focus { transform: translateY(0); }
+.hero { min-height: 900px; min-height: max(900px, 100svh); position: relative; overflow: hidden; border-bottom: 1px solid #ffffff1a; }
+.hero-art { position: absolute; inset: 90px -20px 95px 38%; }
+.hero-art .pitch-drawing { transform: perspective(850px) rotateX(33deg) rotateZ(-33deg) scale(1.05); }
+.hero-art .stadium-halo { background: #b5ff3350; }
+.hero-art-shade { position: absolute; inset: 0; background: linear-gradient(90deg, #080a0b 0%, #080a0b66 22%, transparent 62%), linear-gradient(0deg, #080a0b 0%, transparent 28%, transparent 85%, #080a0b 100%); }
+.hero-photo, .hero-cutout { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; }
+.hero-cutout { object-fit: contain; z-index: 1; }
+.hero-art-index { position: absolute; top: 52px; right: 80px; color: #9aa5aa; }
+.hero-art-caption { position: absolute; right: 80px; top: 53%; width: 155px; color: #c7ff36; display: flex; flex-direction: column; gap: 24px; }
+.hero-art-caption p { font-size: 12px; line-height: 1.7; color: #bac3b7; }
+.hero-coordinates { position: absolute; bottom: 45px; right: 80px; color: #899181; font-size: 9px; }
+.hero-content { padding-top: 157px; padding-bottom: 150px; position: relative; pointer-events: none; }
+.hero-content a { pointer-events: auto; }
+.hero-overline { display: flex; align-items: center; gap: 12px; margin-bottom: 33px; color: #bac0bb; font-size: 10px; }
+.status-dot { display: inline-block; flex-shrink: 0; width: 6px; height: 6px; background: #c7ff36; border-radius: 50%; box-shadow: 0 0 12px #c7ff3633; }
+.hero-title { font: 600 clamp(72px, 8.4vw, 126px)/.87 var(--font-display); letter-spacing: -.015em; width: fit-content; }
+.hero-title-outline { color: #c7ff36; display: block; margin-top: 9px; }
+.hero-title-outline .text-clip:first-child { color: transparent; -webkit-text-stroke: 1px #b6c0ad; }
+.hero-bottom-copy { margin-top: 32px; max-width: 385px; }
+.hero-bottom-copy .body-copy { font-size: 13px; max-width: 350px; }
+.hero-actions { display: flex; align-items: center; gap: 28px; margin-top: 28px; }
+.hero-contact { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; white-space: nowrap; }
+.hero-contact:hover { color: #c7ff36; }
+.hero-rail { position: absolute; bottom: 0; inset-inline: 0; height: 95px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #ffffff1a; }
+.hero-identity { display: flex; flex-direction: column; gap: 8px; }
+.hero-identity strong { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+.hero-identity > span { color: #9aa5aa; font-size: 10px; }
+.rail-slash { color: #c7ff36; margin-inline: 8px; }
+.hero-scroll { display: flex; align-items: center; gap: 24px; font-size: 9px; color: #9aa5aa; }
+.hero-availability { display: flex; align-items: center; gap: 10px; font-size: 9px; }
+@media (min-width: 1600px) { .hero-content { padding-top: 190px; }.hero-title { font-size: 145px; } }
+@media (max-width: 1023px) {
+  .hero-art-caption { right: 35px; width: 110px; }
+  .hero-art-index, .hero-coordinates { right: 35px; }
+  .hero-availability { display: none; }
+}
+@media (max-width: 767px) {
+  .hero { min-height: 870px; }
+  .hero-content { padding-top: 135px; padding-bottom: 135px; }
+  .hero-title { font-size: clamp(68px, 15.5vw, 112px); }
+  .hero-art { inset: 80px -100px 85px 14%; opacity: .65; }
+  .hero-art-shade { background: linear-gradient(90deg, #080a0bdb, #080a0b33), linear-gradient(0deg, #080a0b 0%, transparent 65%); }
+  .hero-art-caption, .hero-art-index, .hero-coordinates { display: none; }
+  .hero-overline { font-size: 8px; }
+  .hero-bottom-copy { margin-top: 28px; }
+  .hero-actions { gap: 22px; flex-wrap: wrap; }
+  .hero-actions .button { padding-inline: 18px; gap: 14px; }
+  .hero-rail { height: 90px; }
+  .hero-scroll { font-size: 0; gap: 0; }
+}
 .pitch-art { position: relative; overflow: hidden; width: 100%; height: 100%; background: radial-gradient(ellipse at 55% 40%, #243014 0%, #101610 35%, #0a0e0d 70%); }
 .stadium-halo { position: absolute; width: 100%; height: 25%; top: 16%; left: 20%; background: #b5ff3333; filter: blur(65px); transform: rotate(-35deg); }
 .pitch-drawing { position: absolute; width: 115%; height: 115%; left: -5%; top: -5%; transform: perspective(800px) rotateX(36deg) rotateZ(-28deg); }
