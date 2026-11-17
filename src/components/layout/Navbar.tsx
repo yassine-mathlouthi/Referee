@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { useLanguage, type Language } from '../../i18n/context'
+import { GlowAction } from '../ui/GlowAction'
 import GooeyNav from '../ui/GooeyNav/GooeyNav'
 import { Monogram } from '../ui/Monogram'
 import { useDialog } from '../ui/useDialog'
@@ -42,7 +43,7 @@ export function Navbar() {
         gooeyness={0.5}
         wobble={0.5}
       />
-      <div className="nav-actions">{languages}<a className="nav-cta" href="#contact">{t.connect}<ArrowUpRight size={14}/></a><button className="menu-toggle" aria-label={t.menu} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(true)}><Menu size={22}/></button></div>
+      <div className="nav-actions">{languages}<GlowAction><a className="nav-cta" href="#contact">{t.connect}<ArrowUpRight size={14}/></a></GlowAction><button className="menu-toggle" aria-label={t.menu} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(true)}><Menu size={22}/></button></div>
     </header>
     <dialog id="mobile-menu" className="mobile-menu" ref={ref} onCancel={onCancel} aria-label={t.menu}>
       <div className="mobile-menu-top"><span className="eyebrow accent">{t.art}</span><button className="icon-button" autoFocus onClick={() => setOpen(false)} aria-label={t.close}><X/></button></div>

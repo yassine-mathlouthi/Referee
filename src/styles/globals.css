@@ -266,9 +266,18 @@ body::after { content: ''; position: fixed; inset: 0; z-index: 80; pointer-event
 }
 @media (max-width: 1023px) { .about-grid { gap: 45px; }.about-image { height: 500px; } }
 @media (max-width: 767px) { .about-grid { grid-template-columns: 1fr; gap: 40px; }.about-visual { order: 2; }.about-image { height: 400px; }.about-copy .section-heading { font-size: clamp(40px, 9vw, 64px); } }
+.button-glow.border-glow-card { display: inline-grid; vertical-align: middle; flex-shrink: 0; box-shadow: none; border: 0; }
+.button-glow > .border-glow-inner { overflow: visible; border-radius: inherit; }
+.button-glow .button, .button-glow .nav-cta { width: 100%; border-radius: inherit; }
+.button-glow:focus-within { outline: 2px solid #c7ff36; outline-offset: 4px; }
+.button-glow.border-glow-card:focus-within { --edge-proximity: 100 !important; }
+.button-glow.border-glow-card:focus-within > .edge-light { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .button-glow.border-glow-card::before, .button-glow.border-glow-card::after, .button-glow.border-glow-card > .edge-light { display: none; }
+}
 .navbar { position: fixed; z-index: 40; top: 20px; left: 50%; transform: translateX(-50%); width: calc(100% - 72px); max-width: calc(100% - 72px); height: 64px; padding-inline: 22px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border: 1px solid transparent; interpolate-size: allow-keywords; transition: width .5s cubic-bezier(.22, 1, .36, 1), background .3s, border-color .3s, border-radius .4s, box-shadow .3s; }
 .navbar-scrolled { width: max-content; background: #101416ed; border-color: #ffffff1a; border-radius: 999px; backdrop-filter: blur(16px); box-shadow: 0 12px 40px #0005; }
-.navbar-scrolled .nav-cta { border-radius: 999px; }
+.navbar-scrolled .nav-cta, .navbar-scrolled .button-glow { border-radius: 999px; }
 .brand { display: flex; align-items: center; gap: 18px; }
 .brand svg { width: 37px; height: 30px; color: #c7ff36; }
 .brand > span { font: 8px var(--font-mono); text-transform: uppercase; letter-spacing: .14em; max-width: 85px; line-height: 1.7; }

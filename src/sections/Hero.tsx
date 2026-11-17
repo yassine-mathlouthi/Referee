@@ -4,6 +4,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { useLanguage } from '../i18n/context'
 import { profile } from '../data/profile'
 import { PitchArt } from '../components/ui/PitchArt'
+import { GlowAction } from '../components/ui/GlowAction'
 import { TextReveal } from '../components/motion/TextReveal'
 import '../styles/hero.css'
 
@@ -39,7 +40,7 @@ export function Hero({ ready = true }: { ready?: boolean }) {
         <motion.div className="campaign-description" {...entrance(.55)}>
           <p>{t.hero.body}</p>
           <div className="hero-actions campaign-actions">
-            <a className="button button-primary campaign-book" href="#contact"><span>{t.hero.contact}</span><span className="campaign-button-icon"><ArrowUpRight aria-hidden="true"/></span></a>
+            <GlowAction><a className="button button-primary campaign-book" href="#contact"><span>{t.hero.contact}</span><span className="campaign-button-icon"><ArrowUpRight aria-hidden="true"/></span></a></GlowAction>
             <a className="campaign-experience" href="#experience">{t.hero.explore}<ArrowUpRight size={17} aria-hidden="true"/></a>
           </div>
         </motion.div>
