@@ -48,6 +48,8 @@ export const ar: Copy = {
     showAll: 'عرض السجل الكامل', showLess: 'عرض أحدث المباريات', result: 'النتيجة النهائية',
     absent: 'غياب المنافس', absentNote: 'لم يحضر فريق اتحاد قرطاج. لم تُسجّل نتيجة.',
     yellow: 'بطاقات صفراء', red: 'بطاقات حمراء', penalties: 'ركلات جزاء',
+    badgeSources: 'شعارات الفرق ومصادرها',
+    badgeNote: 'الشعارات ملك لأصحابها وتُعرض فقط للتعريف بالفرق في سجل المباريات، دون الإيحاء بأي شراكة أو تزكية. تُستخدم الأحرف الأولى عند تعذّر التحقق من الشعار.',
     roles: { referee: 'حكم', assistant: 'حكم مساعد' },
     types: { regional: 'جهوي', friendly: 'ودي', leagueA: 'الرابطة أ', leagueB: 'الرابطة ب' },
     ages: { school: 'مدارس', minime: 'أصاغر', minimeA: 'أصاغر أ', minimeB: 'أصاغر ب', cadetA: 'أشبال أ · U17', cadetB: 'أشبال ب · U16', junior: 'أواسط', juniorU19: 'أواسط · U19' },

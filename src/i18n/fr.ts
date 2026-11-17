@@ -48,6 +48,8 @@ export const fr: Copy = {
     showAll: 'Voir tout le parcours', showLess: 'Voir les matchs récents', result: 'Score final',
     absent: 'Adversaire absent', absentNote: 'Union Carthage ne s’est pas présenté. Aucun résultat enregistré.',
     yellow: 'Cartons jaunes', red: 'Cartons rouges', penalties: 'Penalties',
+    badgeSources: 'Écussons des équipes et sources',
+    badgeNote: 'Les écussons appartiennent à leurs propriétaires respectifs et identifient uniquement les adversaires des matchs. Aucun partenariat ni soutien n’est sous-entendu. Des initiales remplacent les écussons non confirmés.',
     roles: { referee: 'Arbitre', assistant: 'Arbitre assistant' },
     types: { regional: 'Régional', friendly: 'Amical', leagueA: 'Ligue A', leagueB: 'Ligue B' },
     ages: { school: 'École', minime: 'Minime', minimeA: 'Minime A', minimeB: 'Minime B', cadetA: 'Cadet A · U17', cadetB: 'Cadet B · U16', junior: 'Junior', juniorU19: 'Junior · U19' },

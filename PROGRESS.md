@@ -31,14 +31,16 @@
 - [x] Excluded the opponent no-show from played totals and omitted private payment information from public data.
 - [x] Configured the supplied email, WhatsApp, six online profiles and visible spoken languages in About.
 - [x] Added real public contact details and profile references to structured identity metadata.
+- [x] Researched and integrated 13 locally hosted club badges, with exact alias matching, source references and initials fallbacks.
+- [x] Corrected all three Kalâa entries to Kalâa Sport (KS), Kalâa Seghira, following owner confirmation.
 
 ## Verification
 
 - Production build, strict TypeScript and ESLint pass.
 - Playwright tests cover responsive layouts, internationalization, gallery/navigation keyboard behavior, browser errors and SEO.
 - Automated axe WCAG A/AA checks pass for English, French, Arabic and the open lightbox.
-- Initial JavaScript is about 140 KB gzip; desktop GSAP enhancements are separate chunks.
-- All 35 tests pass, including production-browser checks, real contact destinations, direct section links and match-data integrity tests.
+- Initial JavaScript is about 143 KB gzip; desktop GSAP enhancements are separate chunks.
+- All 40 tests pass, including production-browser checks, real contact destinations, club badge loading/fallbacks, direct section links and match-data integrity tests.
 - No invented appointments, statistics, certifications, testimonials, professional affiliations or contact identities.
 
 ## Awaiting real content / account access

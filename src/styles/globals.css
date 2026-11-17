@@ -371,6 +371,24 @@ body::after { content: ''; position: fixed; inset: 0; z-index: 80; pointer-event
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
 @media (pointer: coarse) { .stadium-halo { filter: blur(40px); }.hero-contact { min-height: 44px; } }
+.match-team { display: inline-flex; align-items: center; gap: 10px; max-width: 100%; vertical-align: middle; }
+.match-team bdi { min-width: 0; }
+.team-badge { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 40px; padding: 3px; flex-shrink: 0; border-radius: 3px; background: #f5f7f7; overflow: hidden; }
+.team-badge img { width: 100%; height: 100%; object-fit: contain; }
+.team-badge-fallback { background: #151b19; border: 1px dashed #6a797066; color: #b6c4b8; }
+.team-badge-fallback > span { font: 500 8px 'IBM Plex Mono', monospace; }
+.team-sources { margin-top: 30px; padding-top: 20px; border-top: 1px solid #ffffff1a; }
+.team-sources summary { color: #9aa5aa; font-size: 10px; min-height: 44px; cursor: pointer; padding-block: 12px; }
+.team-sources summary:hover { color: #c7ff36; }
+.team-sources .body-copy { font-size: 11px; max-width: 760px; margin-block: 10px 20px; }
+.team-sources ul { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 25px; padding: 0; margin: 0; }
+.team-sources a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 10px; color: #bdc6c1; }
+.team-sources a:hover { color: #c7ff36; }.team-sources a svg { flex-shrink: 0; }
+@media (max-width: 767px) {
+  .match-team { display: flex; gap: 9px; }
+  .team-badge { width: 30px; height: 34px; }
+  .team-sources ul { grid-template-columns: 1fr; }
+}
 .about-languages { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 24px; }
 .about-languages > .eyebrow { font-size: 8px; }
 .about-languages ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 16px; font-size: 10px; color: #d4dada; }

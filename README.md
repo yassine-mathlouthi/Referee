@@ -26,6 +26,7 @@ Dependencies are pinned and `package-lock.json` is committed. Use `npm ci` for r
 | --- | --- |
 | `src/data/profile.ts` | Identity, real contact destinations, CV and portrait paths |
 | `src/data/matches.ts` | Verified appointments, newest first |
+| `src/data/teams.ts` | Exact team aliases, sourced club badges and initials |
 | `src/data/gallery.ts` | Gallery frames, image paths, cropping and multilingual descriptions |
 | `src/i18n/en.ts`, `fr.ts`, `ar.ts` | All interface copy and localized SEO |
 | `src/styles/globals.css` | Design tokens, composition and responsive styles |
@@ -39,6 +40,14 @@ The appointment list contains **16 entries supplied by Yassine from his 2026 log
 `src/data/matches.ts` holds ISO dates (`YYYY-MM-DD`), teams, location, age category, role, match type, scores, card counts, and any recorded penalties. Use the typed role, age and match-type keys; their display labels are translated in the dictionaries. `status: 'played'` requires a home/away score tuple; `status: 'opponentAbsent'` cannot carry a score. Summary figures are derived from played records, never hardcoded. Payment information is deliberately excluded from the public data and site bundle.
 
 The timeline initially shows the six most recent appointments. Visitors can expand the full history or filter by role. No photo is attached to an individual appointment without a confirmed association. Spelling and accents are lightly normalized, but supplied team acronyms—including ASM/AMS—are preserved rather than silently reconciled. Add future records only after confirming the actual details; do not infer dates, results, credentials or official competition names from photographs.
+
+### Team badges
+
+Thirteen researched club crests are included as local, lossless WebP files, displayed beside team names. Sources and a rights notice are available in the expandable **Team badges & sources** section and in `public/team-logos/SOURCES.md`. Badges identify match opponents only; they do not imply partnerships or endorsements. The logos remain their owners' intellectual property, not freely licensed portfolio artwork. Review source terms and any required permissions before broader promotional use.
+
+The remaining six team labels use neutral initials until a trustworthy badge is supplied or verified. Failed images also fall back to initials without shifting the layout. No live scraping, hotlinking, third-party scripts or network dependency is added for visitors.
+
+Following Yassine's correction, all three former `KAS` / `Kalaa Kobra` opponents are now **Kalâa Sport (KS), Kalâa Seghira**, with the correct crest. The actual match venues remain Soliman and Mégrine.
 
 ### Add real photographs
 

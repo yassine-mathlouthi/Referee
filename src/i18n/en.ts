@@ -46,6 +46,8 @@ export const en = {
     showAll: 'View full history', showLess: 'Show recent matches', result: 'Final score',
     absent: 'Opponent absent', absentNote: 'Union Carthage did not attend. No result recorded.',
     yellow: 'Yellow cards', red: 'Red cards', penalties: 'Penalties',
+    badgeSources: 'Team badges & sources',
+    badgeNote: 'Club marks belong to their respective owners and identify match opponents only. No partnership or endorsement is implied. Initials are used where a badge could not be verified.',
     roles: { referee: 'Referee', assistant: 'Assistant referee' },
     types: { regional: 'Regional', friendly: 'Friendly', leagueA: 'Ligue A', leagueB: 'Ligue B' },
     ages: { school: 'École', minime: 'Minime', minimeA: 'Minime A', minimeB: 'Minime B', cadetA: 'Cadet A · U17', cadetB: 'Cadet B · U16', junior: 'Junior', juniorU19: 'Junior · U19' },
