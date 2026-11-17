@@ -43,7 +43,7 @@ export const en = {
     played: 'Matches played', referee: 'As referee', assistant: 'As assistant referee',
     all: 'All appointments', filter: 'Filter by role', list: 'Match appointments',
     showAll: 'View full history', showLess: 'Show recent matches', result: 'Final score',
-    absent: 'Opponent absent', absentNote: 'Union Carthage did not attend. No result recorded.',
+    absent: 'Opponent absent', absentNote: 'Union Sportive de Carthage did not attend. No result recorded.',
     yellow: 'Yellow cards', red: 'Red cards', penalties: 'Penalties',
     details: 'Details', venue: 'Venue',
     badgeSources: 'Team badges & sources',

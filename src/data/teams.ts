@@ -24,6 +24,7 @@ export const teams: TeamIdentity[] = [
   { id: 'sidi-thabet', name: 'Club Sportif Sidi Thabet', initials: 'CSST', matchNames: ['Sidi Thabet'], logo: '/team-logos/sidi-thabet.webp', source: 'https://www.transfermarkt.com/club-sportif-sidi-thabet/startseite/verein/113638' },
   { id: 'khadhra', name: 'El Khadhra Sport', initials: 'KS', matchNames: ['Khadhra Sport'], logo: '/team-logos/khadhra.webp', source: 'https://www.transfermarkt.com/el-khadhra-sport/startseite/verein/97654' },
   { id: 'kalaa-sport', name: 'Kalâa Sport', initials: 'KS', city: 'Kalâa Seghira', matchNames: ['Kalâa Sport (KS)'], logo: '/team-logos/kalaa-sport.webp', source: 'https://fr.wikipedia.org/wiki/Fichier:Kal%C3%A2a_Sport.png' },
+  { id: 'carthage', name: 'Union Sportive de Carthage', initials: 'USC', city: 'Carthage', matchNames: ['Union Sportive de Carthage (USC)', 'Carthage', 'Union Carthage'], logo: '/team-logos/carthage.webp', source: 'https://footlink.tn/clubs/cmgyruu6' },
 ]
 
 export function getTeamIdentity(matchName: string) {

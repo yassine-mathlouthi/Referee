@@ -20,7 +20,7 @@ test('opponent absence is never represented as a result or a played match', () =
   const absent = matches.filter(match => match.status === 'opponentAbsent')
   expect(absent).toHaveLength(1)
   expect(absent[0].date).toBe('2026-05-17')
-  expect(absent[0].awayTeam).toBe('Union Carthage')
+  expect(absent[0].awayTeam).toBe('Union Sportive de Carthage (USC)')
   expect(absent[0]).not.toHaveProperty('score')
   expect(summarizeMatches(matches)).toEqual({ played: 15, referee: 5, assistant: 10 })
   expect(summarizeMatches([])).toEqual({ played: 0, referee: 0, assistant: 0 })

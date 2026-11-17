@@ -45,7 +45,7 @@ export const fr: Copy = {
     played: 'Matchs joués', referee: 'Comme arbitre', assistant: 'Comme arbitre assistant',
     all: 'Toutes les désignations', filter: 'Filtrer par rôle', list: 'Désignations de matchs',
     showAll: 'Voir tout le parcours', showLess: 'Voir les matchs récents', result: 'Score final',
-    absent: 'Adversaire absent', absentNote: 'Union Carthage ne s’est pas présenté. Aucun résultat enregistré.',
+    absent: 'Adversaire absent', absentNote: 'L’Union sportive de Carthage ne s’est pas présentée. Aucun résultat enregistré.',
     yellow: 'Cartons jaunes', red: 'Cartons rouges', penalties: 'Penalties',
     details: 'Détails', venue: 'Lieu',
     badgeSources: 'Écussons des équipes et sources',

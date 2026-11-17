@@ -4,7 +4,7 @@ import { teams, getTeamIdentity, getTeamInitials } from '../src/data/teams'
 import { matches } from '../src/data/matches'
 
 test('all identified clubs have local WebP badges and source references', () => {
-  expect(teams).toHaveLength(13)
+  expect(teams).toHaveLength(14)
   const aliases = teams.flatMap(team => team.matchNames)
   expect(new Set(aliases).size).toBe(aliases.length)
   for (const team of teams) {
@@ -50,7 +50,7 @@ test('badges load from this site and their sources are keyboard-accessible', asy
   await summary.focus()
   await page.keyboard.press('Enter')
   await expect(page.locator('.team-sources')).toHaveAttribute('open', '')
-  await expect(page.locator('.team-sources a')).toHaveCount(13)
+  await expect(page.locator('.team-sources a')).toHaveCount(14)
 })
 
 test('a failed badge falls back to initials without hiding the team name', async ({ page }) => {

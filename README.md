@@ -35,7 +35,7 @@ Unconfigured contacts are intentionally hidden. Set `email` to your real address
 
 Yassine’s supplied email, WhatsApp, Instagram, LinkedIn, YouTube, TikTok, GitHub and existing portfolio are now configured. Email and WhatsApp are the primary contact actions; the other profiles appear in Contact and the footer. Arabic, English and French are listed in About and structured metadata. The existing portfolio is an **outbound profile link**, not an assumed production domain for this new site. The CV link remains hidden until a real file is provided.
 
-The appointment list contains **16 entries supplied by Yassine from his 2026 log**: 15 played matches (5 as referee, 10 as assistant) and one appointment where Union Carthage was absent. The no-show has no result and does not contribute to played-match totals.
+The appointment list contains **16 entries supplied by Yassine from his 2026 log**: 15 played matches (5 as referee, 10 as assistant) and one appointment where Union Sportive de Carthage was absent. The no-show has no result and does not contribute to played-match totals.
 
 `src/data/matches.ts` holds ISO dates (`YYYY-MM-DD`), teams, location, age category, role, match type, scores, card counts, and any recorded penalties. Use the typed role, age and match-type keys; their display labels are translated in the dictionaries. `status: 'played'` requires a home/away score tuple; `status: 'opponentAbsent'` cannot carry a score. Summary figures are derived from played records, never hardcoded. Payment information is deliberately excluded from the public data and site bundle.
 
@@ -43,9 +43,11 @@ The compact match grid initially shows the six most recent appointments, with th
 
 ### Team badges
 
-Thirteen researched club crests are included as local, transparent lossless WebP files, displayed directly beside team names without white tiles or backgrounds. Native white areas inside the actual club crest are preserved. Sources and a rights notice are available in the expandable **Team badges & sources** section and in `public/team-logos/SOURCES.md`. Badges identify match opponents only; they do not imply partnerships or endorsements. The logos remain their owners' intellectual property, not freely licensed portfolio artwork. Review source terms and any required permissions before broader promotional use.
+Fourteen researched club crests are included as local, transparent lossless WebP files, displayed directly beside team names without white tiles or backgrounds. Native white areas inside the actual club crest are preserved. Sources and a rights notice are available in the expandable **Team badges & sources** section and in `public/team-logos/SOURCES.md`. Badges identify match opponents only; they do not imply partnerships or endorsements. The logos remain their owners' intellectual property, not freely licensed portfolio artwork. Review source terms and any required permissions before broader promotional use.
 
-The remaining six team labels use neutral initials until a trustworthy badge is supplied or verified. Failed images also fall back to initials without shifting the layout. No live scraping, hotlinking, third-party scripts or network dependency is added for visitors.
+The remaining four team labels use neutral initials until a trustworthy badge is supplied or verified. Failed images also fall back to initials without shifting the layout. No live scraping, hotlinking, third-party scripts or network dependency is added for visitors.
+
+Both former `Carthage` and `Union Carthage` entries now refer to **Union Sportive de Carthage (USC)**, following Yassine's confirmation. Its black-and-yellow shield is sourced from Footlink's football club profile under the name Union Sportive Carthaginoise.
 
 Following Yassine's correction, all three former `KAS` / `Kalaa Kobra` opponents are now **Kalâa Sport (KS), Kalâa Seghira**, with the correct crest. The actual match venues remain Soliman and Mégrine.
 
