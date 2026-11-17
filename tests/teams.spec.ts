@@ -60,5 +60,5 @@ test('a failed badge falls back to initials without hiding the team name', async
   const appointment = page.locator('[data-match-id="2026-10-31-parc-b-minime-a"]')
   await appointment.scrollIntoViewIfNeeded()
   await expect(appointment.locator('.team-badge-fallback')).toHaveText('EST')
-  await expect(appointment.locator('.match-team').first()).toContainText('EST (Espérance)')
+  await expect(appointment.locator('.match-team').first()).toContainText('Espérance Sportive de Tunis')
 })

@@ -32,6 +32,7 @@ export function Hero({ ready = true }: { ready?: boolean }) {
     </motion.div>
     <div className="container hero-content">
       <div className="hero-overline eyebrow"><span className="status-dot" />{t.hero.label}</div>
+      <p className="hero-headline-identity"><strong>{t.name}</strong><span aria-hidden="true">—</span><span>{t.profession}</span></p>
       <h1 className="hero-title">
         <TextReveal text={t.hero.first} delay={.12} ready={ready} />
         <TextReveal text={t.hero.second} delay={.22} ready={ready} />
@@ -39,7 +40,7 @@ export function Hero({ ready = true }: { ready?: boolean }) {
       </h1>
       <div className="hero-bottom-copy">
         <p className="body-copy">{t.hero.body}</p>
-        <div className="hero-actions"><a className="button button-primary" href="#about">{t.hero.explore}<ArrowUpRight /></a><a className="hero-contact" href="#contact">{t.hero.contact}<ArrowUpRight size={16}/></a></div>
+        <div className="hero-actions"><a className="button button-primary" href="#contact">{t.hero.contact}<ArrowUpRight /></a><a className="hero-contact" href="#experience">{t.hero.explore}<ArrowUpRight size={16}/></a></div>
       </div>
     </div>
     <div className="hero-rail container">
