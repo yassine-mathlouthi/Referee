@@ -32,7 +32,11 @@ Dependencies are pinned and `package-lock.json` is committed. Use `npm ci` for r
 
 Unconfigured contacts are intentionally hidden. Set `email` to your real address, `whatsapp` to international digits **without** `+`, and social destinations to real HTTPS URLs. Place your CV under `public/files/` and set `cv` to its root-relative `.pdf` path. No forms, backend, API keys, database, or authentication are required.
 
-The appointment list is intentionally empty. Add records only after verifying competition, date (`YYYY-MM-DD`), role, teams, and any other supplied information. Optional unconfirmed fields should remain absent. Do not substitute sample appointments for professional experience.
+The appointment list contains **16 entries supplied by Yassine from his 2026 log**: 15 played matches (5 as referee, 10 as assistant) and one appointment where Union Carthage was absent. The no-show has no result and does not contribute to played-match totals.
+
+`src/data/matches.ts` holds ISO dates (`YYYY-MM-DD`), teams, location, age category, role, match type, scores, card counts, and any recorded penalties. Use the typed role, age and match-type keys; their display labels are translated in the dictionaries. `status: 'played'` requires a home/away score tuple; `status: 'opponentAbsent'` cannot carry a score. Summary figures are derived from played records, never hardcoded. Payment information is deliberately excluded from the public data and site bundle.
+
+The timeline initially shows the six most recent appointments. Visitors can expand the full history or filter by role. No photo is attached to an individual appointment without a confirmed association. Spelling and accents are lightly normalized, but supplied team acronyms—including ASM/AMS—are preserved rather than silently reconciled. Add future records only after confirming the actual details; do not infer dates, results, credentials or official competition names from photographs.
 
 ### Add real photographs
 
@@ -106,7 +110,7 @@ SEO includes static English metadata for crawlers, localized browser metadata, a
 
 ## Launch checklist
 
-- Add verified match records and real contact details; review the supplied photography and crops.
+- Review the imported match log and supply real contact details; review the supplied photography and crops.
 - Review biography and translations with Yassine.
 - Set the real production origin and deploy through your Vercel account.
 - Check actual mobile devices, screen-reader navigation and final image performance.

@@ -26,20 +26,23 @@
 - [x] Eleven supplied photographs optimized into responsive WebP assets: hero, About and nine gallery frames.
 - [x] Updated English, French and Arabic photography captions and removed outdated pending-photo copy.
 - [x] Verified photo loading and manually inspected mobile/desktop crops.
+- [x] Imported Yassine’s 16 supplied 2026 appointments with typed results, roles, age categories, cards and the recorded penalty.
+- [x] Added derived played-match totals, role filters and expandable newest-first history in all three languages.
+- [x] Excluded the opponent no-show from played totals and omitted private payment information from public data.
 
 ## Verification
 
 - Production build, strict TypeScript and ESLint pass.
 - Playwright tests cover responsive layouts, internationalization, gallery/navigation keyboard behavior, browser errors and SEO.
 - Automated axe WCAG A/AA checks pass for English, French, Arabic and the open lightbox.
-- Initial JavaScript is about 138 KB gzip; desktop GSAP enhancements are separate chunks.
-- All 25 production browser tests pass, including the real-photography loading check.
+- Initial JavaScript is about 140 KB gzip; desktop GSAP enhancements are separate chunks.
+- All 32 tests pass, including production-browser checks and match-data integrity tests.
 - No invented appointments, statistics, certifications, testimonials, professional affiliations or contact identities.
 
 ## Awaiting real content / account access
 
 - [x] Supplied photographs and multilingual image descriptions integrated.
-- [ ] Verified match appointments.
+- [x] Owner-supplied match appointments imported; final spelling and log review remains with the owner.
 - [ ] Actual email, WhatsApp, social profiles and CV.
 - [ ] Owner review of copy and translations.
 - [ ] Real production domain, Vercel project connection and live deployment.
