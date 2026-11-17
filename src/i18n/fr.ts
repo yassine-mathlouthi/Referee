@@ -6,6 +6,7 @@ export const fr: Copy = {
   name: 'Yassine Mathlouthi', profession: 'Arbitre de football', country: 'Tunisie',
   nav: { about: 'À propos', experience: 'Parcours', gallery: 'Galerie', contact: 'Contact' },
   menu: 'Ouvrir le menu', close: 'Fermer', language: 'Langue', connect: 'Échangeons',
+  languageNames: { ar: 'Arabe', en: 'Anglais', fr: 'Français' },
   intro: ['Précision.', 'Autorité.', 'Fair-play.'],
   hero: {
     photoAlt: 'Yassine en maillot jaune d’arbitre, sifflant et indiquant une direction sur le terrain.',
@@ -24,6 +25,7 @@ export const fr: Copy = {
     photoAlt: 'Yassine en tenue jaune d’arbitre, debout près d’un but sur le terrain.',
     caption: 'La personne derrière les décisions.', frame: 'PORTRAIT / DANS MON ÉLÉMENT',
     tags: ['Ancré en Tunisie', 'Guidé par l’équité', 'Au-delà des frontières'],
+    languages: 'Langues',
   },
   philosophy: {
     label: '02 / Les principes', title: 'MAÎTRISER L’INSTANT.', accent: 'RESPECTER LE JEU.',
@@ -80,6 +82,7 @@ export const fr: Copy = {
     body: 'Un tournoi. Un nouveau format. La même passion du jeu. Parlons de la suite.',
     pending: 'Les coordonnées sont en préparation. Les liens de contact direct apparaîtront ici dès qu’ils seront disponibles.',
     email: 'Envoyer un e-mail', whatsapp: 'WhatsApp', linkedin: 'LinkedIn', youtube: 'YouTube', cv: 'Télécharger le CV d’arbitre',
+    instagram: 'Instagram', tiktok: 'TikTok', github: 'GitHub', portfolio: 'Autre portfolio', profiles: 'Me retrouver en ligne',
   },
   footer: { top: 'Retour en haut', rights: 'Tous droits réservés.', line: 'L’équité reste toujours en jeu.' },
 }

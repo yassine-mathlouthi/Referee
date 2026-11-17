@@ -5,7 +5,7 @@ import { Monogram } from '../ui/Monogram'
 
 export function Footer() {
   const { t } = useLanguage()
-  const socials = getContactLinks().filter(link => link.key === 'linkedin' || link.key === 'youtube')
+  const socials = getContactLinks().filter(link => link.external && link.key !== 'whatsapp')
   return <footer className="footer">
     <div className="container">
       <div className="footer-top"><div className="footer-identity"><Monogram/><div><p>{t.name}</p><span>{t.profession} / {t.country}</span></div></div><div className="footer-socials">{socials.map(link => <a key={link.key} href={link.href} target="_blank" rel="noopener noreferrer">{t.contact[link.key]}<ArrowUpRight size={14}/></a>)}</div><a className="back-top eyebrow" href="#top">{t.footer.top}<span><ArrowUp size={18}/></span></a></div>

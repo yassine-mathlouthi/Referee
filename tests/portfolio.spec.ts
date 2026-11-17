@@ -5,12 +5,14 @@ import { profile } from '../src/data/profile'
 import { gallery } from '../src/data/gallery'
 
 test('only valid configured contact destinations are exposed', () => {
-  expect(getContactLinks()).toEqual([])
-  expect(getContactLinks({ ...profile, email: 'invalid', whatsapp: '+123', linkedin: 'javascript:alert(1)', cv: '//external.test/file.pdf' })).toEqual([])
-  const links = getContactLinks({ ...profile, email: 'referee@example.org', whatsapp: '21612345678', linkedin: 'https://linkedin.com/in/test', cv: '/files/cv.pdf' })
+  const empty = { ...profile, email: '', whatsapp: '', instagram: '', linkedin: '', youtube: '', tiktok: '', github: '', portfolio: '', cv: '' }
+  expect(getContactLinks(empty)).toEqual([])
+  expect(getContactLinks({ ...empty, email: 'invalid', whatsapp: '+123', linkedin: 'javascript:alert(1)', cv: '//external.test/file.pdf' })).toEqual([])
+  const links = getContactLinks({ ...empty, email: 'referee@example.org', whatsapp: '21612345678', linkedin: 'https://linkedin.com/in/test', cv: '/files/cv.pdf' })
   expect(links.map(link => link.key)).toEqual(['email', 'whatsapp', 'linkedin', 'cv'])
   expect(links[0].href).toBe('mailto:referee@example.org')
   expect(links[1].href).toBe('https://wa.me/21612345678')
+  expect(getContactLinks().map(link => link.key)).toEqual(['email', 'whatsapp', 'instagram', 'linkedin', 'youtube', 'tiktok', 'github', 'portfolio'])
 })
 
 test('introduction is skippable and does not replay', async ({ page }) => {
@@ -126,10 +128,36 @@ test('SEO has truthful structured identity and translated titles', async ({ page
   await expect(page).toHaveTitle('Yassine Mathlouthi | Football Referee')
   const person = await page.locator('script[type="application/ld+json"]').textContent()
   expect(JSON.parse(person!)).toMatchObject({ '@type': 'Person', name: profile.name, homeLocation: { name: 'Tunisia' } })
+  expect(JSON.parse(person!)).toMatchObject({ jobTitle: profile.role, email: profile.email, knowsLanguage: ['Arabic', 'English', 'French'] })
+  expect(JSON.parse(person!).sameAs).toContain(profile.github)
   await page.getByRole('combobox').selectOption('fr')
   await expect(page).toHaveTitle('Yassine Mathlouthi | Arbitre de football')
   await page.getByRole('combobox').selectOption('ar')
   await expect(page).toHaveTitle('ياسين المثلوثي | حكم كرة قدم')
+})
+
+test('supplied contact details and all social destinations are functional links', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await page.goto('/#contact')
+  const contact = page.locator('#contact')
+  await expect(contact.getByRole('link', { name: 'Send an email', exact: true })).toHaveAttribute('href', `mailto:${profile.email}`)
+  await expect(contact.getByRole('link', { name: profile.email, exact: true })).toHaveAttribute('href', `mailto:${profile.email}`)
+  await expect(contact.getByRole('link', { name: 'WhatsApp', exact: true })).toHaveAttribute('href', 'https://wa.me/21654536580')
+  for (const key of ['instagram', 'linkedin', 'youtube', 'tiktok', 'github', 'portfolio'] as const) {
+    const anchor = contact.locator(`a[href="${profile[key]}"]`)
+    await expect(anchor).toHaveCount(1)
+    await expect(anchor).toHaveAttribute('target', '_blank')
+    await expect(anchor).toHaveAttribute('rel', /noopener/)
+    await expect(page.locator(`footer a[href="${profile[key]}"]`)).toHaveCount(1)
+  }
+  await expect(contact).not.toContainText('Contact details are being prepared')
+  await expect(contact.getByRole('link', { name: 'Download referee CV' })).toHaveCount(0)
+  await expect(page.locator('.about-languages')).toContainText('Arabic')
+  await expect(page.locator('.about-languages')).toContainText('English')
+  await expect(page.locator('.about-languages')).toContainText('French')
+  await page.getByRole('combobox').selectOption('ar')
+  await expect(contact.getByRole('link', { name: 'واتساب', exact: true })).toHaveAttribute('href', 'https://wa.me/21654536580')
+  await expect(page.locator('.about-languages')).toContainText('العربية')
 })
 
 for (const language of ['fr', 'ar']) {

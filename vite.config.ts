@@ -15,9 +15,11 @@ function searchMetadata(site: string): Plugin {
         ] : []),
         { tag: 'script', attrs: { type: 'application/ld+json' }, children: JSON.stringify({
           '@context': 'https://schema.org', '@type': 'Person',
-          name: profile.name, jobTitle: 'Football Referee',
+          name: profile.name, jobTitle: profile.role,
           homeLocation: { '@type': 'Country', name: profile.country },
-          knowsLanguage: ['Arabic', 'English', 'French'],
+          knowsLanguage: profile.languages.map(language => language.name),
+          email: profile.email,
+          sameAs: [profile.instagram, profile.linkedin, profile.youtube, profile.tiktok, profile.github, profile.portfolio].filter(url => url.startsWith('https://')),
           ...(site ? { url: `${site}/` } : {}),
         }).replaceAll('<', '\\u003c'), injectTo: 'head' },
       ],

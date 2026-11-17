@@ -4,6 +4,7 @@ export const en = {
   name: 'Yassine Mathlouthi', profession: 'Football referee', country: 'Tunisia',
   nav: { about: 'About', experience: 'Experience', gallery: 'Gallery', contact: 'Contact' },
   menu: 'Open menu', close: 'Close', language: 'Language', connect: 'Let’s talk',
+  languageNames: { ar: 'Arabic', en: 'English', fr: 'French' },
   intro: ['Precision.', 'Authority.', 'Fair play.'],
   hero: {
     photoAlt: 'Yassine in a yellow referee shirt, blowing his whistle and pointing across the pitch.',
@@ -22,6 +23,7 @@ export const en = {
     photoAlt: 'Yassine in his yellow referee kit, standing beside a goal on the football pitch.',
     caption: 'The person behind the decisions.', frame: 'PORTRAIT / AT HOME ON THE PITCH',
     tags: ['Rooted in Tunisia', 'Driven by fairness', 'Looking beyond borders'],
+    languages: 'Languages',
   },
   philosophy: {
     label: '02 / The principles', title: 'CONTROL THE MOMENT.', accent: 'RESPECT THE GAME.',
@@ -78,6 +80,7 @@ export const en = {
     body: 'A tournament. A new format. A shared love of the game. Let’s talk about what comes next.',
     pending: 'Contact details are being prepared. Direct contact links will appear here as soon as they’re available.',
     email: 'Send an email', whatsapp: 'WhatsApp', linkedin: 'LinkedIn', youtube: 'YouTube', cv: 'Download referee CV',
+    instagram: 'Instagram', tiktok: 'TikTok', github: 'GitHub', portfolio: 'Other portfolio', profiles: 'Find me online',
   },
   footer: { top: 'Back to top', rights: 'All rights reserved.', line: 'Fairness is always in play.' },
 }

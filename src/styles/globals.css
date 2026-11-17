@@ -371,6 +371,25 @@ body::after { content: ''; position: fixed; inset: 0; z-index: 80; pointer-event
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
 @media (pointer: coarse) { .stadium-halo { filter: blur(40px); }.hero-contact { min-height: 44px; } }
+.about-languages { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 24px; }
+.about-languages > .eyebrow { font-size: 8px; }
+.about-languages ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 16px; font-size: 10px; color: #d4dada; }
+.contact-intro { flex: 0 1 360px; min-width: 0; }
+.contact-intro .body-copy { font-size: 13px; }
+.contact-address { display: flex; align-items: center; gap: 10px; min-height: 44px; margin-top: 16px; font-size: 11px; color: #d4dada; overflow-wrap: anywhere; }
+.contact-address bdi { min-width: 0; }.contact-address svg { flex-shrink: 0; }
+.contact-address:hover { color: #c7ff36; }
+.contact-destinations { flex: 1; max-width: 640px; min-width: 0; }
+.contact-destinations .contact-links { justify-content: flex-start; max-width: none; }
+.contact-socials { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 20px; }
+.contact-socials .text-link { min-height: 44px; }
+.footer-socials { flex: 1; min-width: 0; flex-wrap: wrap; justify-content: center; gap: 6px 22px; }
+.footer-socials a { min-height: 44px; }
+@media (max-width: 1023px) {
+  .contact-bottom { flex-direction: column; gap: 28px; }
+  .contact-intro { flex: auto; max-width: 440px; }.contact-destinations { flex: auto; max-width: none; }
+  .footer-top { flex-wrap: wrap; }.footer-socials { order: 3; flex-basis: 100%; justify-content: flex-start; }.back-top { margin-inline-start: auto; }
+}
 .hero-real-photo .hero-photo { filter: saturate(.7) brightness(.76); }
 .hero-real-photo .hero-art-caption { display: none; }
 .hero-real-photo .hero-art-shade { background: linear-gradient(90deg, #080a0b 0%, #080a0b80 20%, #080a0b0a 55%, #080a0b4d 100%), linear-gradient(0deg, #080a0b 0%, transparent 28%, transparent 80%, #080a0b 100%); }

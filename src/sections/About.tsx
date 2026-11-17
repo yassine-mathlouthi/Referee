@@ -18,6 +18,7 @@ export function About() {
         <p className="about-lead">{t.about.lead}</p>
         <p className="body-copy">{t.about.body}</p><p className="body-copy">{t.about.more}</p>
         <ul className="about-tags">{t.about.tags.map(tag => <li key={tag}><span className="status-dot"/>{tag}</li>)}</ul>
+        <div className="about-languages"><span className="eyebrow muted">{t.about.languages}</span><ul>{profile.languages.map(language => <li key={language.code}>{t.languageNames[language.code]}</li>)}</ul></div>
       </SectionReveal>
     </div>
   </section>
