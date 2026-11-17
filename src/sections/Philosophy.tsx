@@ -1,27 +1,35 @@
 import { useEffect, useRef } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowUpRight } from 'lucide-react'
 import { useLanguage } from '../i18n/context'
 import { SectionReveal } from '../components/motion/SectionReveal'
-
-gsap.registerPlugin(ScrollTrigger)
 
 export function Philosophy() {
   const { t } = useLanguage()
   const root = useRef<HTMLElement>(null)
   useEffect(() => {
-    const media = gsap.matchMedia()
-    media.add('(prefers-reduced-motion: no-preference) and (min-width: 768px)', () => {
-      const context = gsap.context(() => {
-        gsap.fromTo('.principle-progress', { scaleX: 0 }, { scaleX: 1, ease: 'none', scrollTrigger: { trigger: root.current, start: 'top 65%', end: 'bottom 65%', scrub: .5 } })
-        gsap.utils.toArray<HTMLElement>('.principle-name').forEach(element => {
-          gsap.fromTo(element, { x: -18, opacity: .35 }, { x: 0, opacity: 1, scrollTrigger: { trigger: element, start: 'top 90%', end: 'top 50%', scrub: .5 } })
-        })
-      }, root)
-      return () => context.revert()
-    })
-    return () => media.revert()
+    if (!window.matchMedia('(prefers-reduced-motion: no-preference) and (min-width: 768px)').matches) return
+    let disposed = false
+    let cleanup: (() => void) | undefined
+    // This enhancement never enters the critical bundle or runs on mobile.
+    void Promise.all([import('gsap'), import('gsap/ScrollTrigger')]).then(([{ default: gsap }, { ScrollTrigger }]) => {
+      if (disposed) return
+      gsap.registerPlugin(ScrollTrigger)
+      const media = gsap.matchMedia()
+      media.add('(prefers-reduced-motion: no-preference) and (min-width: 768px)', () => {
+        const context = gsap.context(() => {
+          gsap.fromTo('.principle-progress', { scaleX: 0 }, { scaleX: 1, ease: 'none', scrollTrigger: { trigger: root.current, start: 'top 65%', end: 'bottom 65%', scrub: .5 } })
+          gsap.utils.toArray<HTMLElement>('.principle-name').forEach(element => {
+            gsap.fromTo(element, { x: -18, opacity: .35 }, { x: 0, opacity: 1, scrollTrigger: { trigger: element, start: 'top 90%', end: 'top 50%', scrub: .5 } })
+          })
+        }, root)
+        return () => context.revert()
+      })
+      cleanup = () => media.revert()
+    }).catch(() => { /* The editorial layout works without optional motion. */ })
+    return () => {
+      disposed = true
+      cleanup?.()
+    }
   }, [])
   return <section id="philosophy" className="section philosophy" ref={root} aria-labelledby="philosophy-title">
     <div className="container">

@@ -263,6 +263,8 @@ body::after { content: ''; position: fixed; inset: 0; z-index: 80; pointer-event
 .desktop-nav a[aria-current]::after { content: ''; position: absolute; bottom: 9px; left: 0; width: 16px; height: 2px; background: #c7ff36; }
 .nav-actions { display: flex; align-items: center; gap: 22px; }
 .language-select select { border: 0; padding: 10px 2px; background: transparent; color: #b4babb; font: 10px var(--font-mono); cursor: pointer; }
+.language-select { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+.language-select select { min-height: 44px; min-width: 44px; }
 .language-select option { background: #101416; color: #fff; }
 .nav-cta { display: flex; align-items: center; gap: 20px; font-size: 10px; border: 1px solid #ffffff30; padding: 12px 16px; }
 .nav-cta:hover { border-color: #c7ff36; color: #c7ff36; }
@@ -322,3 +324,4 @@ body::after { content: ''; position: fixed; inset: 0; z-index: 80; pointer-event
   .section-label { font-size: 9px; margin-bottom: 28px; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+@media (pointer: coarse) { .stadium-halo { filter: blur(40px); }.hero-contact { min-height: 44px; } }

@@ -83,6 +83,7 @@ for (const language of ['fr', 'ar'] as const) {
       await page.getByRole('combobox').selectOption(language)
       await expect(page.locator('html')).toHaveAttribute('lang', language)
       await expect(page.locator('html')).toHaveAttribute('dir', language === 'ar' ? 'rtl' : 'ltr')
+      await page.evaluate(() => document.fonts.ready)
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
       await page.reload()
       await expect(page.locator('html')).toHaveAttribute('lang', language)
@@ -90,3 +91,15 @@ for (const language of ['fr', 'ar'] as const) {
     })
   }
 }
+
+test('normal-motion page scrolls without errors or hiding content', async ({ page }) => {
+  const errors: string[] = []
+  page.on('pageerror', error => errors.push(error.message))
+  await page.goto('/#about')
+  await expect(page.locator('.intro')).toHaveCount(0)
+  for (const section of ['about', 'philosophy', 'experience', 'gallery', 'availability', 'contact']) {
+    await page.locator(`#${section}`).scrollIntoViewIfNeeded()
+    await expect(page.locator(`#${section} h2`)).toBeVisible()
+  }
+  expect(errors).toEqual([])
+})
