@@ -315,6 +315,9 @@ body::after { content: ''; position: fixed; inset: 0; z-index: 80; pointer-event
   .section { padding-block: 80px; }
   .section-label { font-size: 9px; margin-bottom: 28px; }
 }
+.cinematic-progress { position: fixed; inset: 0 0 auto; height: 3px; z-index: 1000; pointer-events: none; background: linear-gradient(90deg, #907239, #e4c887, #fff0c3); transform: scaleX(0); transform-origin: left; box-shadow: 0 0 16px #e4c88766; }
+[dir="rtl"] .cinematic-progress { transform-origin: right; }
+@media (prefers-reduced-motion: reduce) { .cinematic-progress { display: none; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
 @media (pointer: coarse) { .stadium-halo { filter: blur(40px); } }
 .match-team { display: grid; grid-template-columns: 28px minmax(0, 1fr) 20px; align-items: center; gap: 10px; min-height: 34px; }

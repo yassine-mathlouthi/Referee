@@ -1,3 +1,4 @@
+import { CinematicMotion } from './components/motion/CinematicMotion'
 import { IntroSequence } from './components/motion/IntroSequence'
 import { Hero } from './sections/Hero'
 import { useLanguage } from './i18n/context'
@@ -28,6 +29,6 @@ export default function App() {
     writeStorage('ym-intro', 'seen', true)
     setIntroVisible(false)
   }, [])
-  return <><a href="#main" className="skip-link">{t.skip}</a><IntroSequence visible={introVisible} onComplete={finishIntro}/><Navbar /><main id="main"><Hero ready={!introVisible}/><About /><Philosophy /><Experience /><Gallery /><Availability /><Contact /></main><Footer /></>
+  return <><CinematicMotion /><a href="#main" className="skip-link">{t.skip}</a><IntroSequence visible={introVisible} onComplete={finishIntro}/><Navbar /><main id="main"><Hero ready={!introVisible}/><About /><Philosophy /><Experience /><Gallery /><Availability /><Contact /></main><Footer /></>
 }
 import { useCallback, useEffect, useState } from 'react'
